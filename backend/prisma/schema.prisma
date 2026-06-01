@@ -1,3 +1,9 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
@@ -9,16 +15,14 @@ datasource db {
 }
 
 model pelicula {
-  id         Int      @id @default(autoincrement())
-  Title      String
-  Year       Int
-  Poster     String
-  imdbRating Float
-  Runtime    Float
-  Director   String
-  Plot       String
-  Images     String
-  Actors     String
-  cratedAt   DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+    Title String
+    Year Int
+    imdbID String @id 
+    Poster String
+    imdbRating Float
+    Runtime Float
+    Director String
+    Plot String
+    Images String
+    Actors String
 }
