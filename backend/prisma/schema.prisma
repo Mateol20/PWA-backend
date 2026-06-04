@@ -14,14 +14,14 @@ datasource db {
 }
 
 model pelicula {
-    Title String
-    Year Int
-    imdbID String @id 
-    Poster String
-    imdbRating Float
-    Runtime Float
-    Director String
-    Plot String
-    Images String
-    Actors String
+  Id         Int    @id @default(autoincrement())
+  Title      String
+  Year       Int
+  Poster     String
+  imdbRating Float
+  Runtime    Float
+  Director   String
+  Plot       String
+  Images     String
+  Actors     String
 }
