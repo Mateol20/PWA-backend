@@ -1,15 +1,7 @@
-import express from 'express';
+import app from "./app.js";
 
-const app = express();
-app.use(express.json());
+const PORT = process.env.PORT || 3000;
 
-app.get('/api/health', (req, res) => {
-  res.json({
-"status": "ok",
-"message": "API funcionando correctamente"
-});
-});
-
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
