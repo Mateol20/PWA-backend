@@ -9,7 +9,7 @@ export async function getAll(req, res) {
     res.status(500).json({ error: "Error interno del servidor" });
   }
 }
-
+//milamores
 export async function getById(req, res) {
   const { id } = req.params
   try {
