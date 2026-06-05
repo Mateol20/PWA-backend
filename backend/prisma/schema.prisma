@@ -9,7 +9,7 @@ datasource db {
 }
 
 model pelicula {
-  Id         Int    @id @default(autoincrement())
+  Id         Int      @id @default(autoincrement())
   Title      String
   Year       Int
   Poster     String
@@ -19,4 +19,6 @@ model pelicula {
   Plot       String
   Images     String
   Actors     String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
