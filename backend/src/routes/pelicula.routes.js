@@ -1,19 +1,12 @@
-import express from "express";
 import { Router } from "express";
-import { PrismaClient } from "@prisma/client";
+import * as peliculaController from "../controllers/pelicula.controller.js";
 
-const router = Router()
-const prisma = new PrismaClient();
-const app = express();
-app.use(express.json());
+const router = Router();
 
-router.get('/pelicula', async(req, res) =>{ 
-try{
-    const peliculas = await prisma.pelicula.findMany() 
-    res.json(peliculas)   
-  }catch{
-res.json({ error: "Error al obtener las películas"})
-  }
-  })
+router.get("/", peliculaController.getAll);
+router.get("/:id", peliculaController.getById);
+// router.post("/", peliculaController.create);
+// router.put("/:id", peliculaController.update);
+// router.delete("/:id", peliculaController.remove);
 
-  export default router
+export default router;
