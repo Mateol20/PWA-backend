@@ -12,6 +12,8 @@ app.get("/api/health", (req, res) => {
 
 app.use("/api/peliculas", peliculasRouter);
 
+
+
 app.use(errorHandler);
 
 export default app;
