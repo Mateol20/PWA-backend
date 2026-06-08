@@ -4,6 +4,7 @@ import data from "./seed-data.json" with { type: "json" };
 const prisma = new PrismaClient();
 
 try {
+  await prisma.pelicula.deleteMany();
   await prisma.pelicula.createMany({ data });
   console.log("Seed ejecutado correctamente");
 } catch (error) {

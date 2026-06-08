@@ -19,6 +19,8 @@ model pelicula {
   Plot       String
   Images     String
   Actors     String
+  Type       String   @default("movie")
+  Genre      String   @default("N/A")
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }
