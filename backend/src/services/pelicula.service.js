@@ -1,7 +1,22 @@
 import prisma from "../prisma/prismaClient.js";
 
-export async function getAll() {
-  return prisma.pelicula.findMany();
+export async function getAll({ page = 1, limit = 8, search = "" } = {}) {
+  const skip = (page - 1) * limit;
+  const where = search
+    ? {
+        OR: [
+          { Title: { contains: search, mode: "insensitive" } },
+          { Director: { contains: search, mode: "insensitive" } },
+        ],
+      }
+    : {};
+
+  const [data, total] = await Promise.all([
+    prisma.pelicula.findMany({ skip, take: limit, where, orderBy: { Id: "asc" } }),
+    prisma.pelicula.count({ where }),
+  ]);
+
+  return { data, total, page, limit };
 }
 
 export async function getById(id) {
