@@ -23,4 +23,5 @@ model pelicula {
   Genre      String   @default("N/A")
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+  favorito  Boolean  @default(false)
 }

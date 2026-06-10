@@ -1,5 +1,7 @@
 import * as peliculaService from "../services/pelicula.service.js";
 import { validarPelicula } from "../validations/pelicula.validation.js";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 export async function getAll(req, res) {
   try {
@@ -73,5 +75,41 @@ export async function remove(req, res) {
       return res.status(404).json({ error: "Recurso no encontrado" });
     }
     res.status(500).json({ error: "Error interno del servidor" });
+  }
+}
+
+
+export async function toggleFavorito(req, res, next) {
+  try {
+    const { id } = req.params;
+    const { favorito } = req.body;
+
+    const peliculaActualizada = await prisma.pelicula.update({
+      where: { Id: parseInt(id) },
+      data: { favorito: favorito },
+    });
+
+    res.json({
+      status: "success",
+      message: "Estado de favorito actualizado",
+      data: peliculaActualizada
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function getFavoritos(req, res, next) {
+  try {
+    const favoritas = await prisma.pelicula.findMany({
+      where: { favorito: true }
+    });
+
+    res.json({
+      status: "success",
+      data: favoritas
+    });
+  } catch (error) {
+    next(error);
   }
 }
