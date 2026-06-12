@@ -3,11 +3,12 @@ import { validarPelicula } from "../validations/pelicula.validation.js";
 
 export async function getAll(req, res) {
   try {
-    const { page, limit, search } = req.query;
+    const { page, limit, search, lang } = req.query;
     const result = await peliculaService.getAll({
       page: page ? parseInt(page) : undefined,
       limit: limit ? parseInt(limit) : undefined,
       search,
+      lang,
     });
     res.json(result);
   } catch (error) {
@@ -17,8 +18,9 @@ export async function getAll(req, res) {
 
 export async function getById(req, res) {
   const { id } = req.params;
+  const { lang } = req.query;
   try {
-    const pelicula = await peliculaService.getById(Number(id));
+    const pelicula = await peliculaService.getById(Number(id), lang);
 
     if (!pelicula) {
       return res.status(404).json({ error: "Recurso no encontrado" });

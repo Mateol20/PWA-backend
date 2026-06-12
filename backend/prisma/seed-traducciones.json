@@ -1,0 +1,398 @@
+[
+  {
+    "peliculaId": 1,
+    "idioma": "es",
+    "sinopsis": "Dos hombres encarcelados se unen durante varios años, encontrando consuelo y eventualmente redención a través de actos de decencia común.",
+    "genero": "Drama"
+  },
+  {
+    "peliculaId": 2,
+    "idioma": "es",
+    "sinopsis": "Cuando la amenaza conocida como el Joker causa estragos y caos en la gente de Gotham, Batman debe aceptar una de las mayores pruebas psicológicas.",
+    "genero": "Acción, Crimen, Drama"
+  },
+  {
+    "peliculaId": 3,
+    "idioma": "es",
+    "sinopsis": "A un ladrón experto que roba secretos corporativos mediante tecnología para compartir sueños se le asigna la tarea inversa de plantar una idea.",
+    "genero": "Acción, Aventura, Ciencia ficción"
+  },
+  {
+    "peliculaId": 4,
+    "idioma": "es",
+    "sinopsis": "Las vidas de dos sicarios de la mafia, un boxeador, un gángster y su esposa se entrelazan en cuatro historias de violencia y redención.",
+    "genero": "Crimen, Drama"
+  },
+  {
+    "peliculaId": 5,
+    "idioma": "es",
+    "sinopsis": "Las presidencias de Kennedy y Johnson se desarrollan desde la perspectiva de un hombre de Alabama con un coeficiente intelectual de 75.",
+    "genero": "Drama, Romance"
+  },
+  {
+    "peliculaId": 6,
+    "idioma": "es",
+    "sinopsis": "Un pirata informático aprende sobre la verdadera naturaleza de la realidad y su papel en la guerra contra sus controladores.",
+    "genero": "Acción, Ciencia ficción"
+  },
+  {
+    "peliculaId": 7,
+    "idioma": "es",
+    "sinopsis": "El anciano patriarca de una dinastía del crimen organizado transfiere el control de su imperio clandestino a su hijo menor y más reacio.",
+    "genero": "Crimen, Drama"
+  },
+  {
+    "peliculaId": 8,
+    "idioma": "es",
+    "sinopsis": "Un equipo de exploradores viaja a través de un agujero de gusano en el espacio en un intento por asegurar la supervivencia de la humanidad.",
+    "genero": "Aventura, Drama, Ciencia ficción"
+  },
+  {
+    "peliculaId": 9,
+    "idioma": "es",
+    "sinopsis": "Un joven cadete del FBI debe recibir la ayuda de un asesino caníbal manipulador y encarcelado para ayudar a atrapar a otro asesino en serie.",
+    "genero": "Crimen, Drama, Suspense"
+  },
+  {
+    "peliculaId": 10,
+    "idioma": "es",
+    "sinopsis": "Una aristócrata de diecisiete años se enamora de un artista amable pero pobre a bordo del lujoso y desafortunado R.M.S. Titánico.",
+    "genero": "Drama, Romance"
+  },
+  {
+    "peliculaId": 11,
+    "idioma": "es",
+    "sinopsis": "Un marine parapléjico enviado a la luna Pandora en una misión única se debate entre seguir sus órdenes y proteger el mundo.",
+    "genero": "Acción, Aventura, Ciencia ficción"
+  },
+  {
+    "peliculaId": 12,
+    "idioma": "es",
+    "sinopsis": "La codicia y la discriminación de clases amenazan la recién formada relación simbiótica entre la rica familia Park y el indigente clan Kim.",
+    "genero": "Drama, Suspense"
+  },
+  {
+    "peliculaId": 13,
+    "idioma": "es",
+    "sinopsis": "Los héroes más poderosos de la Tierra deben unirse y aprender a luchar en equipo para proteger al mundo de una amenaza alienígena.",
+    "genero": "Acción, Ciencia ficción"
+  },
+  {
+    "peliculaId": 14,
+    "idioma": "es",
+    "sinopsis": "Un profesor de química de secundaria diagnostica cáncer de pulmón y se dedica a fabricar metanfetamina con un antiguo alumno para asegurar el futuro de su familia.",
+    "genero": "Crimen, Drama, Suspense"
+  },
+  {
+    "peliculaId": 15,
+    "idioma": "es",
+    "sinopsis": "Nueve familias nobles luchan por el control de las tierras de Poniente, mientras un antiguo enemigo emerge del lejano Norte.",
+    "genero": "Acción, Aventura, Drama"
+  },
+  {
+    "peliculaId": 16,
+    "idioma": "es",
+    "sinopsis": "Cuando un joven desaparece, sus amigos, familiares y la policía local descubren un misterio que involucra experimentos secretos del gobierno y aterradoras fuerzas sobrenaturales.",
+    "genero": "Drama, Fantasía, Terror"
+  },
+  {
+    "peliculaId": 17,
+    "idioma": "es",
+    "sinopsis": "Sigue las rivalidades políticas y el romance de la reina Isabel II y la familia real británica.",
+    "genero": "Drama, Historia"
+  },
+  {
+    "peliculaId": 18,
+    "idioma": "es",
+    "sinopsis": "Un falso documental sobre la vida cotidiana de los empleados de oficina en la sucursal de Scranton, Pensilvania, de la ficticia Dunder Mifflin Paper Company.",
+    "genero": "Comedia"
+  },
+  {
+    "peliculaId": 19,
+    "idioma": "es",
+    "sinopsis": "Un relato del desastre en el reactor nuclear de Chernobyl y los modelos de coraje y convicción que sucedieron después.",
+    "genero": "Drama, Historia, Suspense"
+  },
+  {
+    "peliculaId": 20,
+    "idioma": "es",
+    "sinopsis": "Tras las historias de Jango y Boba Fett, surge otro guerrero en el universo de Star Wars.",
+    "genero": "Acción, Aventura, Ciencia ficción"
+  },
+  {
+    "peliculaId": 21,
+    "idioma": "es",
+    "sinopsis": "Un ex general romano se propone vengarse del corrupto emperador que asesinó a su familia y lo envió a la esclavitud.",
+    "genero": "Acción, Aventura, Drama"
+  },
+  {
+    "peliculaId": 22,
+    "idioma": "es",
+    "sinopsis": "Después de un trágico accidente, dos magos del escenario se involucran en una batalla para crear la ilusión definitiva mientras sacrifican todo para burlarse mutuamente.",
+    "genero": "Drama, Misterio, Ciencia ficción"
+  },
+  {
+    "peliculaId": 23,
+    "idioma": "es",
+    "sinopsis": "Un joven pobre pero apasionado se enamora de una joven rica, dándole una sensación de libertad, pero pronto se separan debido a sus diferencias sociales.",
+    "genero": "Drama, Romance"
+  },
+  {
+    "peliculaId": 24,
+    "idioma": "es",
+    "sinopsis": "En Gotham City, el comediante Arthur Fleck, con problemas mentales, es ignorado y maltratado por la sociedad. Luego se embarca en una espiral descendente de revolución y crímenes sangrientos.",
+    "genero": "Crimen, Drama, Suspense"
+  },
+  {
+    "peliculaId": 25,
+    "idioma": "es",
+    "sinopsis": "Paul Atreides, un joven brillante, deberá viajar al peligroso planeta Dune para asegurar el futuro de su familia y su gente.",
+    "genero": "Acción, Aventura, Drama"
+  },
+  {
+    "peliculaId": 26,
+    "idioma": "es",
+    "sinopsis": "Sigue la vida personal y profesional de seis amigos de veinte a treinta años que viven en Manhattan.",
+    "genero": "Comedia, Romance"
+  },
+  {
+    "peliculaId": 27,
+    "idioma": "es",
+    "sinopsis": "El jefe de la mafia de Nueva Jersey, Tony Soprano, se ocupa de su vida familiar y sus asuntos comerciales en una clínica de terapia.",
+    "genero": "Crimen, Drama"
+  },
+  {
+    "peliculaId": 28,
+    "idioma": "es",
+    "sinopsis": "Una comedia mordaz y cruda centrada en los empleados de oficina mientras realizan su trabajo.",
+    "genero": "Comedia"
+  },
+  {
+    "peliculaId": 29,
+    "idioma": "es",
+    "sinopsis": "En la intersección del futuro cercano y el pasado reinventado, aguarda un mundo en el que cada apetito humano puede ser satisfecho sin consecuencias.",
+    "genero": "Drama, Misterio, Ciencia ficción"
+  },
+  {
+    "peliculaId": 30,
+    "idioma": "es",
+    "sinopsis": "Una serie de drama criminal de antología estadounidense que presenta una historia, un escenario y un elenco diferentes en cada temporada.",
+    "genero": "Crimen, Drama, Misterio"
+  },
+  {
+    "peliculaId": 31,
+    "idioma": "es",
+    "sinopsis": "Un hábil ladrón y su equipo continúan su trabajo en sueños compartidos.",
+    "genero": "Acción, Aventura, Ciencia ficción"
+  },
+  {
+    "peliculaId": 32,
+    "idioma": "es",
+    "sinopsis": "La historia del científico estadounidense J. Robert Oppenheimer y su papel en el desarrollo de la bomba atómica.",
+    "genero": "Drama, Historia, Biografía"
+  },
+  {
+    "peliculaId": 33,
+    "idioma": "es",
+    "sinopsis": "Barbie escapa de su perfecto mundo plástico para unirse al mundo real, con Ken a su lado.",
+    "genero": "Aventura, Comedia, Fantasía"
+  },
+  {
+    "peliculaId": 34,
+    "idioma": "es",
+    "sinopsis": "Una investigación del FBI sobre los asesinatos de la Nación Osage descubre una red de codicia, corrupción y violencia.",
+    "genero": "Crimen, Drama, Historia"
+  },
+  {
+    "peliculaId": 35,
+    "idioma": "es",
+    "sinopsis": "Joel y Ellie, una pareja conectada por la dureza del mundo en el que viven, se ven obligados a depender el uno del otro para sobrevivir su viaje.",
+    "genero": "Acción, Aventura, Drama"
+  },
+  {
+    "peliculaId": 36,
+    "idioma": "es",
+    "sinopsis": "Geralt de Rivia, un cazador de monstruos solitario, se esfuerza por encontrar su lugar en un mundo donde las personas suelen resultar más malvadas que las bestias.",
+    "genero": "Acción, Aventura, Drama"
+  },
+  {
+    "peliculaId": 37,
+    "idioma": "es",
+    "sinopsis": "Huyendo de un negocio de drogas que salió mal, Mikhaela debe encontrar su camino a través del sistema legal con la ayuda de un estafador y un abogado talentoso.",
+    "genero": "Comedia, Drama"
+  },
+  {
+    "peliculaId": 38,
+    "idioma": "es",
+    "sinopsis": "Los juicios y tribulaciones del abogado penalista Jimmy McGill, junto con su mejor amigo Kim Wexler.",
+    "genero": "Crimen, Drama"
+  },
+  {
+    "peliculaId": 39,
+    "idioma": "es",
+    "sinopsis": "Un médico antisocial inconformista que se especializa en medicina de diagnóstico hace todo lo necesario para resolver los casos desconcertantes que llegan a su equipo.",
+    "genero": "Drama, Misterio"
+  },
+  {
+    "peliculaId": 40,
+    "idioma": "es",
+    "sinopsis": "Una actualización moderna encuentra al famoso detective y su compañero médico resolviendo crímenes en el Londres del siglo XXI.",
+    "genero": "Crimen, Drama, Misterio"
+  },
+  {
+    "peliculaId": 41,
+    "idioma": "es",
+    "sinopsis": "Las aventuras satíricas de una familia de clase trabajadora en el siglo XXI.",
+    "genero": "Animación, Comedia"
+  },
+  {
+    "peliculaId": 42,
+    "idioma": "es",
+    "sinopsis": "Una mirada crónica a las hazañas criminales del narcotraficante colombiano Pablo Escobar.",
+    "genero": "Crimen, Drama, Suspense"
+  },
+  {
+    "peliculaId": 43,
+    "idioma": "es",
+    "sinopsis": "Un grupo de justicieros se propone acabar con los superhéroes corruptos que abusan de sus superpoderes.",
+    "genero": "Acción, Comedia, Drama"
+  },
+  {
+    "peliculaId": 44,
+    "idioma": "es",
+    "sinopsis": "Un joven chef de alta cocina regresa a Chicago para dirigir el restaurante de sándwiches de su familia después de una tragedia.",
+    "genero": "Comedia, Drama"
+  },
+  {
+    "peliculaId": 45,
+    "idioma": "es",
+    "sinopsis": "Una serie que sigue a Rue, una chica de 16 años, mientras navega por las drogas, el sexo y la identidad.",
+    "genero": "Drama"
+  },
+  {
+    "peliculaId": 46,
+    "idioma": "es",
+    "sinopsis": "Sigue a agentes y perfiladores del FBI mientras cazan asesinos en serie y desarrollan técnicas de elaboración de perfiles criminales.",
+    "genero": "Crimen, Drama, Suspense"
+  },
+  {
+    "peliculaId": 47,
+    "idioma": "es",
+    "sinopsis": "Un planificador financiero se ve obligado a lavar dinero para un capo de la droga cuando su esposa y su socio tienen una aventura.",
+    "genero": "Crimen, Drama, Suspense"
+  },
+  {
+    "peliculaId": 48,
+    "idioma": "es",
+    "sinopsis": "Una epopeya familiar de gánsteres ambientada en el Birmingham de 1919, siguiendo a la familia criminal Shelby.",
+    "genero": "Crimen, Drama"
+  },
+  {
+    "peliculaId": 49,
+    "idioma": "es",
+    "sinopsis": "Sigue las rivalidades políticas y el romance de la reina Isabel II en la década de 1960.",
+    "genero": "Drama, Historia"
+  },
+  {
+    "peliculaId": 50,
+    "idioma": "es",
+    "sinopsis": "Cientos de jugadores con problemas de liquidez aceptan una invitación para competir en juegos infantiles por un premio enorme, pero lo que está en juego es mortal.",
+    "genero": "Acción, Drama, Suspense"
+  },
+  {
+    "peliculaId": 51,
+    "idioma": "es",
+    "sinopsis": "Wednesday Addams es enviada a Nevermore Academy, una escuela misteriosa donde descubre la causa de un levantamiento de monstruos.",
+    "genero": "Comedia, Crimen, Drama"
+  },
+  {
+    "peliculaId": 52,
+    "idioma": "es",
+    "sinopsis": "Los enredos románticos y los chismes que rodean a la aristocrática familia Bridgerton ambientados en la Inglaterra de la era de la Regencia.",
+    "genero": "Drama, Romance"
+  },
+  {
+    "peliculaId": 53,
+    "idioma": "es",
+    "sinopsis": "Un joven de 18 años en el espectro del autismo decide que es hora de encontrar una novia, un viaje que coloca a su madre en el camino que le cambiará la vida.",
+    "genero": "Comedia, Drama"
+  },
+  {
+    "peliculaId": 54,
+    "idioma": "es",
+    "sinopsis": "Tras el suicidio de una chica de secundaria, sus compañeros descubren los trece motivos que llevaron a su trágica decisión.",
+    "genero": "Drama, Misterio"
+  },
+  {
+    "peliculaId": 55,
+    "idioma": "es",
+    "sinopsis": "Una serie de suspenso y ciencia ficción alemana donde los niños comienzan a desaparecer en un pequeño pueblo, revelando una conspiración para viajar en el tiempo.",
+    "genero": "Crimen, Drama, Misterio, Ciencia ficción"
+  },
+  {
+    "peliculaId": 56,
+    "idioma": "es",
+    "sinopsis": "Un veterano de guerra que sirve como guardaespaldas de un político controvertido desentraña una conspiración que amenaza a la nación.",
+    "genero": "Acción, Drama, Suspense"
+  },
+  {
+    "peliculaId": 57,
+    "idioma": "es",
+    "sinopsis": "El multimillonario Oliver Queen regresa a su ciudad como un justiciero enmascarado para luchar contra el crimen y la corrupción.",
+    "genero": "Acción, Crimen, Drama"
+  },
+  {
+    "peliculaId": 58,
+    "idioma": "es",
+    "sinopsis": "Después de ganar velocidad sobrehumana, un científico forense lucha contra el crimen y descubre la verdad sobre su pasado.",
+    "genero": "Acción, Aventura, Drama"
+  },
+  {
+    "peliculaId": 59,
+    "idioma": "es",
+    "sinopsis": "Continúan las rivalidades políticas y el romance entre la reina Isabel II y la familia real británica.",
+    "genero": "Drama, Historia"
+  },
+  {
+    "peliculaId": 60,
+    "idioma": "es",
+    "sinopsis": "Un cerebro criminal conocido como 'El Profesor' tiene un plan para llevar a cabo el mayor atraco jamás visto en España.",
+    "genero": "Acción, Crimen, Drama"
+  },
+  {
+    "peliculaId": 61,
+    "idioma": "es",
+    "sinopsis": "Durante la búsqueda de un asesino en serie, un perfilador del FBI forma una peligrosa asociación con un brillante psiquiatra.",
+    "genero": "Crimen, Drama, Terror"
+  },
+  {
+    "peliculaId": 62,
+    "idioma": "es",
+    "sinopsis": "Un analista de salpicaduras de sangre que también es un asesino en serie secreto ayuda al Departamento de Policía Metropolitana de Miami a resolver asesinatos.",
+    "genero": "Crimen, Drama, Misterio"
+  },
+  {
+    "peliculaId": 63,
+    "idioma": "es",
+    "sinopsis": "Un ingeniero estructural es incriminado y encarcelado, por lo que su hermano idea un elaborado plan para ayudarlo a escapar.",
+    "genero": "Acción, Crimen, Drama"
+  },
+  {
+    "peliculaId": 64,
+    "idioma": "es",
+    "sinopsis": "Los supervivientes de un accidente aéreo se ven obligados a trabajar juntos para sobrevivir en una isla tropical aparentemente desierta.",
+    "genero": "Aventura, Drama, Misterio"
+  },
+  {
+    "peliculaId": 65,
+    "idioma": "es",
+    "sinopsis": "Una casa embrujada, los oscuros secretos de una familia y los recuerdos de un pasado incierto esperan a los vivos mientras los muertos se mueven por los pasillos.",
+    "genero": "Drama, Terror, Misterio"
+  },
+  {
+    "peliculaId": 66,
+    "idioma": "es",
+    "sinopsis": "Una niñera debe proteger a los huérfanos a su cuidado de la siniestra amenaza de una extensa finca inglesa.",
+    "genero": "Drama, Terror, Romance"
+  }
+]

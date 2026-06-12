@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -9,18 +8,31 @@ datasource db {
 }
 
 model pelicula {
-  Id         Int      @id @default(autoincrement())
-  Title      String
-  Year       Int
-  Poster     String
-  imdbRating Float
-  Runtime    Float
-  Director   String
-  Plot       String
-  Images     String
-  Actors     String
-  Type       String   @default("movie")
-  Genre      String   @default("N/A")
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  Id                  Int                   @id @default(autoincrement())
+  Title               String
+  Year                Int
+  Poster              String
+  imdbRating          Float
+  Runtime             Float
+  Director            String
+  Plot                String
+  Images              String
+  Actors              String
+  Type                String                @default("movie")
+  Genre               String                @default("N/A")
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  traducciones pelicula_traduccion[]
+}
+
+model pelicula_traduccion {
+  id         Int      @id @default(autoincrement())
+  peliculaId Int
+  idioma     String
+  sinopsis   String
+  genero     String?
+
+  pelicula   pelicula @relation(fields: [peliculaId], references: [Id], onDelete: Cascade)
+
+  @@unique([peliculaId, idioma])
 }
