@@ -81,28 +81,46 @@ export async function remove(req, res) {
 
 export async function toggleFavorito(req, res, next) {
   try {
-    const { id } = req.params;
-    const { favorito } = req.body;
+    const idPelicula = Number(req.params.id);
+    const idUsuario = Number(req.body.idUsuario) || 1;
 
-    const peliculaActualizada = await prisma.pelicula.update({
-      where: { Id: parseInt(id) },
-      data: { favorito: favorito },
+    const existente = await prisma.favorito.findUnique({
+      where: { idUsuario_idPelicula: { idUsuario, idPelicula } },
+    });
+
+    if (existente) {
+      await prisma.favorito.delete({ where: { id: existente.id } });
+      return res.json({
+        status: "success",
+        message: "Eliminado de favoritos",
+        data: null,
+        esFavorito: false
+      });
+    }
+
+    const nuevo = await prisma.favorito.create({
+      data: { idUsuario, idPelicula },
+      include: { pelicula: true },
     });
 
     res.json({
       status: "success",
-      message: "Estado de favorito actualizado",
-      data: peliculaActualizada
+      message: "Agregado a favoritos",
+      data: nuevo,
+      esFavorito: true
     });
   } catch (error) {
+    console.error(error);
     next(error);
   }
 }
 
 export async function getFavoritos(req, res, next) {
   try {
-    const favoritas = await prisma.pelicula.findMany({
-      where: { favorito: true }
+    const idUsuario = Number(req.query.idUsuario) || 1;
+    const favoritas = await prisma.favorito.findMany({
+          where: { idUsuario },
+          include: { pelicula: true },
     });
 
     res.json({
