@@ -1,5 +1,7 @@
 import * as peliculaService from "../services/pelicula.service.js";
 import { validarPelicula } from "../validations/pelicula.validation.js";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 export async function getAll(req, res) {
   try {
@@ -75,5 +77,59 @@ export async function remove(req, res) {
       return res.status(404).json({ error: "Recurso no encontrado" });
     }
     res.status(500).json({ error: "Error interno del servidor" });
+  }
+}
+
+
+export async function toggleFavorito(req, res, next) {
+  try {
+    const idPelicula = Number(req.params.id);
+    const idUsuario = Number(req.body.idUsuario) || 1;
+
+    const existente = await prisma.favorito.findUnique({
+      where: { idUsuario_idPelicula: { idUsuario, idPelicula } },
+    });
+
+    if (existente) {
+      await prisma.favorito.delete({ where: { id: existente.id } });
+      return res.json({
+        status: "success",
+        message: "Eliminado de favoritos",
+        data: null,
+        esFavorito: false
+      });
+    }
+
+    const nuevo = await prisma.favorito.create({
+      data: { idUsuario, idPelicula },
+      include: { pelicula: true },
+    });
+
+    res.json({
+      status: "success",
+      message: "Agregado a favoritos",
+      data: nuevo,
+      esFavorito: true
+    });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+}
+
+export async function getFavoritos(req, res, next) {
+  try {
+    const idUsuario = Number(req.query.idUsuario) || 1;
+    const favoritas = await prisma.favorito.findMany({
+          where: { idUsuario },
+          include: { pelicula: true },
+    });
+
+    res.json({
+      status: "success",
+      data: favoritas
+    });
+  } catch (error) {
+    next(error);
   }
 }
