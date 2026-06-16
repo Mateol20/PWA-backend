@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "pelicula" ADD COLUMN     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN     "updatedAt" TIMESTAMP(3);
+UPDATE "pelicula" SET "updatedAt" = CURRENT_TIMESTAMP WHERE "updatedAt" IS NULL;
+ALTER TABLE "pelicula" ALTER COLUMN "updatedAt" SET NOT NULL;
