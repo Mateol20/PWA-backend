@@ -1,15 +1,15 @@
 import * as peliculaService from "../services/pelicula.service.js";
 import { validarPelicula } from "../validations/pelicula.validation.js";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "../prisma/prismaClient.js";
 
 export async function getAll(req, res) {
   try {
-    const { page, limit, search } = req.query;
+    const { page, limit, search, lang } = req.query;
     const result = await peliculaService.getAll({
       page: page ? parseInt(page) : undefined,
       limit: limit ? parseInt(limit) : undefined,
       search,
+      lang,
     });
     res.json(result);
   } catch (error) {
@@ -19,8 +19,9 @@ export async function getAll(req, res) {
 
 export async function getById(req, res) {
   const { id } = req.params;
+  const { lang } = req.query;
   try {
-    const pelicula = await peliculaService.getById(Number(id));
+    const pelicula = await peliculaService.getById(Number(id), lang);
 
     if (!pelicula) {
       return res.status(404).json({ error: "Recurso no encontrado" });
@@ -78,7 +79,6 @@ export async function remove(req, res) {
   }
 }
 
-
 export async function toggleFavorito(req, res, next) {
   try {
     const idPelicula = Number(req.params.id);
@@ -94,7 +94,7 @@ export async function toggleFavorito(req, res, next) {
         status: "success",
         message: "Eliminado de favoritos",
         data: null,
-        esFavorito: false
+        esFavorito: false,
       });
     }
 
@@ -107,7 +107,7 @@ export async function toggleFavorito(req, res, next) {
       status: "success",
       message: "Agregado a favoritos",
       data: nuevo,
-      esFavorito: true
+      esFavorito: true,
     });
   } catch (error) {
     console.error(error);
@@ -119,13 +119,13 @@ export async function getFavoritos(req, res, next) {
   try {
     const idUsuario = Number(req.query.idUsuario) || 1;
     const favoritas = await prisma.favorito.findMany({
-          where: { idUsuario },
-          include: { pelicula: true },
+      where: { idUsuario },
+      include: { pelicula: true },
     });
 
     res.json({
       status: "success",
-      data: favoritas
+      data: favoritas,
     });
   } catch (error) {
     next(error);

@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -9,7 +8,7 @@ datasource db {
 }
 
 model pelicula {
-  Id         Int      @id @default(autoincrement())
+  Id         Int        @id @default(autoincrement())
   Title      String
   Year       Int
   Poster     String
@@ -19,25 +18,39 @@ model pelicula {
   Plot       String
   Images     String
   Actors     String
-  Type       String   @default("movie")
-  Genre      String   @default("N/A")
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  favoritos Favorito[]
+  Type       String     @default("movie")
+  Genre      String     @default("N/A")
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  traducciones pelicula_traduccion[]
+  favoritos  Favorito[]
 }
- model Usuario{
-  Id Int @id @default(autoincrement())
-  nombre  String @unique @default("Admin")
-  contrasenia String
-  favoritos Favorito[]
- }
 
- model Favorito{
-  Id Int @id @default(autoincrement())
-  idPelicula Int
-  idUsuario Int
-  usuario  Usuario @relation(fields: [idUsuario], references: [Id])
-  pelicula  pelicula @relation(fields: [idPelicula], references: [Id])
+model pelicula_traduccion {
+  id         Int      @id @default(autoincrement())
+  peliculaId Int
+  idioma     String
+  sinopsis   String
+  genero     String?
+
+  pelicula   pelicula @relation(fields: [peliculaId], references: [Id], onDelete: Cascade)
+
+  @@unique([peliculaId, idioma])
+}
+
+model Usuario {
+  Id          Int        @id @default(autoincrement())
+  nombre      String     @unique @default("Admin")
+  contrasenia String
+  favoritos   Favorito[]
+}
+
+model Favorito {
+  Id          Int      @id @default(autoincrement())
+  idPelicula  Int
+  idUsuario   Int
+  usuario     Usuario  @relation(fields: [idUsuario], references: [Id])
+  pelicula    pelicula @relation(fields: [idPelicula], references: [Id])
 
   @@unique([idUsuario, idPelicula])
- }
+}

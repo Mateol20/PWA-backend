@@ -1,7 +1,20 @@
 import prisma from "../prisma/prismaClient.js";
 
-export async function getAll({ page = 1, limit = 8, search = "" } = {}) {
+function aplicarTraduccion(pelicula, lang) {
+  if (!lang) return pelicula;
+  const trad = pelicula.traducciones?.[0];
+  if (!trad) return pelicula;
+  const { traducciones, ...resto } = pelicula;
+  return {
+    ...resto,
+    Plot: trad.sinopsis,
+    Genre: trad.genero ?? pelicula.Genre,
+  };
+}
+
+export async function getAll({ page = 1, limit = 8, search = "", lang } = {}) {
   const skip = (page - 1) * limit;
+
   const where = search
     ? {
         OR: [
@@ -12,15 +25,33 @@ export async function getAll({ page = 1, limit = 8, search = "" } = {}) {
     : {};
 
   const [data, total] = await Promise.all([
-    prisma.pelicula.findMany({ skip, take: limit, where, orderBy: { Id: "asc" } }),
+    prisma.pelicula.findMany({
+      skip,
+      take: limit,
+      where,
+      orderBy: { Id: "asc" },
+      include: lang
+        ? { traducciones: { where: { idioma: lang } } }
+        : undefined,
+    }),
     prisma.pelicula.count({ where }),
   ]);
 
-  return { data, total, page, limit };
+  const dataMapped = lang ? data.map((p) => aplicarTraduccion(p, lang)) : data;
+
+  return { data: dataMapped, total, page, limit };
 }
 
-export async function getById(id) {
-  return prisma.pelicula.findUnique({ where: { Id: id } });
+export async function getById(id, lang) {
+  const pelicula = await prisma.pelicula.findUnique({
+    where: { Id: id },
+    include: lang
+      ? { traducciones: { where: { idioma: lang } } }
+      : undefined,
+  });
+
+  if (!pelicula) return null;
+  return aplicarTraduccion(pelicula, lang);
 }
 
 export async function create(data) {

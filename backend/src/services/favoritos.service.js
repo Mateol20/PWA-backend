@@ -1,7 +1,5 @@
 import prisma from "../prisma/prismaClient.js";
 
-
-
 export async function getAllFavorito({ page = 1, limit = 8, search = "", idUsuario } = {}) {
   const skip = (page - 1) * limit;
 
@@ -32,27 +30,6 @@ export async function getAllFavorito({ page = 1, limit = 8, search = "", idUsuar
 
   return { data, total, page, limit };
 }
-
-
-
-// export async function getAllFavorito({ page = 1, limit = 8, search = "" } = {}) {
-//   const skip = (page - 1) * limit;
-//   const where = search
-//     ? {
-//         OR: [
-//           { Title: { contains: search, mode: "insensitive" } },
-//           { Director: { contains: search, mode: "insensitive" } },
-//         ],
-//       }
-//     : {};
-
-//   const [data, total] = await Promise.all([
-//     prisma.favorito.findMany({ skip, take: limit, where, orderBy: { Id: "asc" } }),
-//     prisma.favorito.count({ where }),
-//   ]);
-
-//   return { data, total, page, limit };
-// }
 
 export async function getByIdFavorito(id) {
   return prisma.favorito.findUnique({ where: { Id: id } });
