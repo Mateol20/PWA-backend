@@ -6,10 +6,13 @@ const prisma = new PrismaClient();
 
 try {
   await prisma.pelicula_traduccion.deleteMany();
+  await prisma.favorito.deleteMany();
+  await prisma.usuario.deleteMany();
   await prisma.pelicula.deleteMany();
   await prisma.$executeRawUnsafe('ALTER SEQUENCE "pelicula_Id_seq" RESTART WITH 1');
   await prisma.pelicula.createMany({ data });
   await prisma.pelicula_traduccion.createMany({ data: traducciones });
+  await prisma.usuario.create({ data: { nombre: "Admin", contrasenia: "admin123" } });
   console.log("Seed ejecutado correctamente");
 } catch (error) {
   console.error("Error al ejecutar el seed:", error);
