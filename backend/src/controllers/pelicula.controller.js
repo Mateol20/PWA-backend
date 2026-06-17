@@ -97,7 +97,7 @@ export async function toggleFavorito(req, res, next) {
     });
 
     if (existente) {
-      await prisma.favorito.delete({ where: { id: existente.id } });
+      await prisma.favorito.delete({ where: { id: existente.Id } });
       return res.json({
         status: "success",
         message: "Eliminado de favoritos",
@@ -118,9 +118,7 @@ export async function toggleFavorito(req, res, next) {
       esFavorito: true,
     });
   } catch (error) {
-    console.error("Error en toggleFavorito:", error);
-    const message = error?.meta?.target || error?.meta?.field_name || error?.message || "Unknown error";
-    res.status(500).json({ error: "Error interno del servidor", detail: String(message).substring(0, 300) });
+    next(error);
   }
 }
 
