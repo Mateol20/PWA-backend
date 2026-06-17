@@ -82,7 +82,15 @@ export async function remove(req, res) {
 export async function toggleFavorito(req, res, next) {
   try {
     const idPelicula = Number(req.params.id);
-    const idUsuario = Number(req.body.idUsuario) || 1;
+    let idUsuario = Number(req.body.idUsuario) || 1;
+
+    let usuario = await prisma.usuario.findUnique({ where: { Id: idUsuario } });
+    if (!usuario) {
+      usuario = await prisma.usuario.create({
+        data: { nombre: "Admin", contrasenia: "admin123" },
+      });
+      idUsuario = usuario.Id;
+    }
 
     const existente = await prisma.favorito.findUnique({
       where: { idUsuario_idPelicula: { idUsuario, idPelicula } },
@@ -117,7 +125,16 @@ export async function toggleFavorito(req, res, next) {
 
 export async function getFavoritos(req, res, next) {
   try {
-    const idUsuario = Number(req.query.idUsuario) || 1;
+    let idUsuario = Number(req.query.idUsuario) || 1;
+
+    let usuario = await prisma.usuario.findUnique({ where: { Id: idUsuario } });
+    if (!usuario) {
+      usuario = await prisma.usuario.create({
+        data: { nombre: "Admin", contrasenia: "admin123" },
+      });
+      idUsuario = usuario.Id;
+    }
+
     const favoritas = await prisma.favorito.findMany({
       where: { idUsuario },
       include: { pelicula: true },
