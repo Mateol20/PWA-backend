@@ -1,20 +1,24 @@
 import { Router } from "express";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import prisma from "../prisma/prismaClient.js";
 
 const router = Router();
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const translationsFilePath = path.join(__dirname, "../locales");
 
-router.get("/:lang", (req, res) => {
-  const lang = req.params.lang;
-  const filePath = path.join(translationsFilePath, `${lang}.json`);
-  if (fs.existsSync(filePath)) {
-    const translations = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-    res.json(translations);
-  } else {
-    res.status(404).json({ error: "Language not found" });
+router.get("/:lang", async (req, res, next) => {
+  try {
+    const lang = req.params.lang;
+    const filas = await prisma.traduccion.findMany({
+      where: { entidad: "ui", idioma: lang },
+    });
+    if (filas.length === 0) {
+      return res.status(404).json({ error: "Idioma no soportado" });
+    }
+    const traducciones = {};
+    for (const f of filas) {
+      traducciones[f.clave] = f.valor;
+    }
+    res.json(traducciones);
+  } catch (error) {
+    next(error);
   }
 });
 

@@ -1,14 +1,13 @@
 import prisma from "../prisma/prismaClient.js";
 
-function aplicarTraduccion(pelicula, lang) {
-  if (!lang) return pelicula;
-  const trad = pelicula.traducciones?.[0];
-  if (!trad) return pelicula;
-  const { traducciones, ...resto } = pelicula;
+function aplicarTraduccion(pelicula, traducciones) {
+  if (!traducciones?.length) return pelicula;
+  const sinopsis = traducciones.find((t) => t.clave === "sinopsis")?.valor;
+  const genero = traducciones.find((t) => t.clave === "genero")?.valor;
   return {
-    ...resto,
-    Plot: trad.sinopsis,
-    Genre: trad.genero ?? pelicula.Genre,
+    ...pelicula,
+    Plot: sinopsis ?? pelicula.Plot,
+    Genre: genero ?? pelicula.Genre,
   };
 }
 
@@ -24,34 +23,36 @@ export async function getAll({ page = 1, limit = 8, search = "", lang } = {}) {
       }
     : {};
 
-  const [data, total] = await Promise.all([
-    prisma.pelicula.findMany({
-      skip,
-      take: limit,
-      where,
-      orderBy: { Id: "asc" },
-      include: lang
-        ? { traducciones: { where: { idioma: lang } } }
-        : undefined,
-    }),
-    prisma.pelicula.count({ where }),
-  ]);
+  const data = await prisma.pelicula.findMany({ skip, take: limit, where, orderBy: { Id: "asc" } });
+  const total = await prisma.pelicula.count({ where });
 
-  const dataMapped = lang ? data.map((p) => aplicarTraduccion(p, lang)) : data;
+  if (lang && data.length > 0) {
+    const ids = data.map((p) => String(p.Id));
+    const traducciones = await prisma.traduccion.findMany({
+      where: { entidad: { in: ids }, idioma: lang },
+    });
+    const dataMapped = data.map((p) => {
+      const t = traducciones.filter((tr) => tr.entidad === String(p.Id));
+      return aplicarTraduccion(p, t);
+    });
+    return { data: dataMapped, total, page, limit };
+  }
 
-  return { data: dataMapped, total, page, limit };
+  return { data, total, page, limit };
 }
 
 export async function getById(id, lang) {
-  const pelicula = await prisma.pelicula.findUnique({
-    where: { Id: id },
-    include: lang
-      ? { traducciones: { where: { idioma: lang } } }
-      : undefined,
-  });
-
+  const pelicula = await prisma.pelicula.findUnique({ where: { Id: id } });
   if (!pelicula) return null;
-  return aplicarTraduccion(pelicula, lang);
+
+  if (lang) {
+    const traducciones = await prisma.traduccion.findMany({
+      where: { entidad: String(id), idioma: lang },
+    });
+    return aplicarTraduccion(pelicula, traducciones);
+  }
+
+  return pelicula;
 }
 
 export async function create(data) {
