@@ -118,7 +118,9 @@ export async function toggleFavorito(req, res, next) {
       esFavorito: true,
     });
   } catch (error) {
-    next(error);
+    console.error("Error en toggleFavorito:", error);
+    const message = error?.meta?.target || error?.meta?.field_name || error?.message || "Unknown error";
+    res.status(500).json({ error: "Error interno del servidor", detail: String(message).substring(0, 300) });
   }
 }
 
