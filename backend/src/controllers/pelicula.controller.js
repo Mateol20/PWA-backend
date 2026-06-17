@@ -84,13 +84,13 @@ export async function toggleFavorito(req, res, next) {
     const idPelicula = Number(req.params.id);
     let idUsuario = Number(req.body.idUsuario) || 1;
 
-    let usuario = await prisma.usuario.findUnique({ where: { Id: idUsuario } });
+    let usuario = await prisma.usuario.findFirst();
     if (!usuario) {
       usuario = await prisma.usuario.create({
         data: { nombre: "Admin", contrasenia: "admin123" },
       });
-      idUsuario = usuario.Id;
     }
+    idUsuario = usuario.Id;
 
     const existente = await prisma.favorito.findFirst({
       where: { idUsuario, idPelicula },
@@ -110,7 +110,6 @@ export async function toggleFavorito(req, res, next) {
       data: { idUsuario, idPelicula },
       include: { pelicula: true },
     });
-    console.log("Favorito creado:", nuevo);
 
     res.json({
       status: "success",
@@ -119,8 +118,7 @@ export async function toggleFavorito(req, res, next) {
       esFavorito: true,
     });
   } catch (error) {
-    console.error("Error en toggleFavorito:", error?.message || error, error?.stack);
-    res.status(500).json({ error: "Error interno del servidor", detail: error?.message || "Unknown" });
+    next(error);
   }
 }
 
@@ -128,13 +126,13 @@ export async function getFavoritos(req, res, next) {
   try {
     let idUsuario = Number(req.query.idUsuario) || 1;
 
-    let usuario = await prisma.usuario.findUnique({ where: { Id: idUsuario } });
+    let usuario = await prisma.usuario.findFirst();
     if (!usuario) {
       usuario = await prisma.usuario.create({
         data: { nombre: "Admin", contrasenia: "admin123" },
       });
-      idUsuario = usuario.Id;
     }
+    idUsuario = usuario.Id;
 
     const favoritas = await prisma.favorito.findMany({
       where: { idUsuario },
