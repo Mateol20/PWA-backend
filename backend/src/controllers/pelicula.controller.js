@@ -92,8 +92,8 @@ export async function toggleFavorito(req, res, next) {
       idUsuario = usuario.Id;
     }
 
-    const existente = await prisma.favorito.findUnique({
-      where: { idUsuario_idPelicula: { idUsuario, idPelicula } },
+    const existente = await prisma.favorito.findFirst({
+      where: { idUsuario, idPelicula },
     });
 
     if (existente) {
@@ -110,6 +110,7 @@ export async function toggleFavorito(req, res, next) {
       data: { idUsuario, idPelicula },
       include: { pelicula: true },
     });
+    console.log("Favorito creado:", nuevo);
 
     res.json({
       status: "success",
@@ -118,8 +119,8 @@ export async function toggleFavorito(req, res, next) {
       esFavorito: true,
     });
   } catch (error) {
-    console.error(error);
-    next(error);
+    console.error("Error en toggleFavorito:", error?.message || error, error?.stack);
+    res.status(500).json({ error: "Error interno del servidor", detail: error?.message || "Unknown" });
   }
 }
 
