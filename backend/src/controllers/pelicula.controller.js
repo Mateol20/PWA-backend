@@ -97,7 +97,9 @@ export async function toggleFavorito(req, res, next) {
     });
 
     if (existente) {
-      await prisma.favorito.delete({ where: { id: existente.Id } });
+      await prisma.favorito.deleteMany({
+        where: { idUsuario, idPelicula },
+      });
       return res.json({
         status: "success",
         message: "Eliminado de favoritos",
@@ -118,11 +120,7 @@ export async function toggleFavorito(req, res, next) {
       esFavorito: true,
     });
   } catch (error) {
-    console.error("TOGGLE ERROR:", error?.message || error);
-    res.status(500).json({
-      error: "Error interno del servidor",
-      detail: error?.message?.substring?.(0, 300) || String(error).substring(0, 300),
-    });
+    next(error);
   }
 }
 
