@@ -42,6 +42,7 @@ const uiTraducciones = {
     actores: "Actores", sinopsis: "Sinopsis", publicadoEn: "Publicado en",
     sinResultados: "No se encontraron películas para esta búsqueda.",
     cargando: "Cargando...", sinPoster: "Sin Poster", sinImagen: "Imagen No Encontrada",
+    todo: "Todo", peliculas: "Películas", series: "Series",
   },
   en: {
     inicio: "Home", favoritos: "Favorites", cartelera: "Showtime",
@@ -52,6 +53,7 @@ const uiTraducciones = {
     actores: "Actors", sinopsis: "Plot", publicadoEn: "Released in",
     sinResultados: "No movies found for this search.",
     cargando: "Loading...", sinPoster: "No Poster", sinImagen: "Image Not Found",
+    todo: "All", peliculas: "Movies", series: "Series",
   },
 };
 
