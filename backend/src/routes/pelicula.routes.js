@@ -4,6 +4,7 @@ import * as peliculaController from "../controllers/pelicula.controller.js";
 const router = Router();
 
 router.get("/", peliculaController.getAll);
+router.get("/genero/:genero", peliculaController.getByGenero);
 router.get("/favoritas", peliculaController.getFavoritos);
 router.get("/:id", peliculaController.getById);
 router.post("/", peliculaController.create);
