@@ -9,9 +9,18 @@ import { errorHandler } from "./middlewares/errorHandler.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
-const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
-const corsOrigin = frontendUrl.startsWith("http") ? frontendUrl : `https://${frontendUrl}`;
-app.use(cors({ origin: corsOrigin }));
+const frontendUrl = process.env.FRONTEND_URL || "https://pwa-frontend-roan.vercel.app";
+const origenesPermitidos = [
+  frontendUrl,
+  "http://localhost:5173",
+  "http://localhost:4173",
+];
+app.use(cors({
+  origin: (origin, cb) => {
+    if (!origin || origenesPermitidos.includes(origin)) return cb(null, true);
+    cb(null, false);
+  },
+}));
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "..", "public", "images")));
 app.use("/api/translations", translationsRouter);
