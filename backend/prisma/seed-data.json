@@ -10,20 +10,22 @@
     "Images": "https://img.omdbapi.com/?i=tt0111161&apikey=4a68574c",
     "Actors": "Tim Robbins, Morgan Freeman, Bob Gunton",
     "Type": "movie",
-    "Genre": "Drama"
+    "Genre": "Drama",
+    "Trailer": "https://www.youtube-nocookie.com/embed/PLl99DlL6b4"
   },
   {
     "Title": "The Dark Knight",
     "Year": 2008,
     "Poster": "https://img.omdbapi.com/?i=tt0468569&apikey=4a68574c",
-    "imdbRating": 9.0,
+    "imdbRating": 9,
     "Runtime": 152,
     "Director": "Christopher Nolan",
     "Plot": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological tests.",
     "Images": "https://img.omdbapi.com/?i=tt0468569&apikey=4a68574c",
     "Actors": "Christian Bale, Heath Ledger, Aaron Eckhart",
     "Type": "movie",
-    "Genre": "Action, Crime, Drama"
+    "Genre": "Action, Crime, Drama",
+    "Trailer": "https://www.youtube-nocookie.com/embed/EXeTwQWrcwY"
   },
   {
     "Title": "Inception",
@@ -36,7 +38,8 @@
     "Images": "https://img.omdbapi.com/?i=tt1375666&apikey=4a68574c",
     "Actors": "Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page",
     "Type": "movie",
-    "Genre": "Action, Adventure, Sci-Fi"
+    "Genre": "Action, Adventure, Sci-Fi",
+    "Trailer": "https://www.youtube-nocookie.com/embed/YoHD9XEInc0"
   },
   {
     "Title": "Pulp Fiction",
@@ -49,7 +52,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0110912&apikey=4a68574c",
     "Actors": "John Travolta, Uma Thurman, Samuel L. Jackson",
     "Type": "movie",
-    "Genre": "Crime, Drama"
+    "Genre": "Crime, Drama",
+    "Trailer": "https://www.youtube-nocookie.com/embed/5ZAhzsi1ybM"
   },
   {
     "Title": "Forrest Gump",
@@ -62,7 +66,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0109830&apikey=4a68574c",
     "Actors": "Tom Hanks, Robin Wright, Gary Sinise",
     "Type": "movie",
-    "Genre": "Drama, Romance"
+    "Genre": "Drama, Romance",
+    "Trailer": "https://www.youtube-nocookie.com/embed/eYSnxZKTZzU"
   },
   {
     "Title": "The Matrix",
@@ -75,7 +80,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0133093&apikey=4a68574c",
     "Actors": "Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss",
     "Type": "movie",
-    "Genre": "Action, Sci-Fi"
+    "Genre": "Action, Sci-Fi",
+    "Trailer": "https://www.youtube-nocookie.com/embed/vKQi3bBA1y8"
   },
   {
     "Title": "Godfather",
@@ -88,7 +94,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0068646&apikey=4a68574c",
     "Actors": "Marlon Brando, Al Pacino, James Caan",
     "Type": "movie",
-    "Genre": "Crime, Drama"
+    "Genre": "Crime, Drama",
+    "Trailer": "https://www.youtube-nocookie.com/embed/sY1S34973zA"
   },
   {
     "Title": "Interstellar",
@@ -101,7 +108,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0816692&apikey=4a68574c",
     "Actors": "Matthew McConaughey, Anne Hathaway, Jessica Chastain",
     "Type": "movie",
-    "Genre": "Adventure, Drama, Sci-Fi"
+    "Genre": "Adventure, Drama, Sci-Fi",
+    "Trailer": "https://www.youtube-nocookie.com/embed/zSWdZVtXT7E"
   },
   {
     "Title": "The Silence of the Lambs",
@@ -114,7 +122,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0102926&apikey=4a68574c",
     "Actors": "Jodie Foster, Anthony Hopkins, Scott Glenn",
     "Type": "movie",
-    "Genre": "Crime, Drama, Thriller"
+    "Genre": "Crime, Drama, Thriller",
+    "Trailer": "https://www.youtube-nocookie.com/embed/W6GDil0rBkk"
   },
   {
     "Title": "Titanic",
@@ -127,7 +136,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0120338&apikey=4a68574c",
     "Actors": "Leonardo DiCaprio, Kate Winslet, Billy Zane",
     "Type": "movie",
-    "Genre": "Drama, Romance"
+    "Genre": "Drama, Romance",
+    "Trailer": "https://www.youtube-nocookie.com/embed/2e-eXJ6HgkQ"
   },
   {
     "Title": "Avatar",
@@ -140,7 +150,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0499549&apikey=4a68574c",
     "Actors": "Sam Worthington, Zoe Saldaña, Sigourney Weaver",
     "Type": "movie",
-    "Genre": "Action, Adventure, Sci-Fi"
+    "Genre": "Action, Adventure, Sci-Fi",
+    "Trailer": "https://www.youtube-nocookie.com/embed/5PSNL1qE6VY"
   },
   {
     "Title": "Parasite",
@@ -153,20 +164,22 @@
     "Images": "https://img.omdbapi.com/?i=tt6751668&apikey=4a68574c",
     "Actors": "Song Kang-ho, Lee Sun-kyun, Cho Yeo-jeong",
     "Type": "movie",
-    "Genre": "Drama, Thriller"
+    "Genre": "Drama, Thriller",
+    "Trailer": "https://www.youtube-nocookie.com/embed/5xH0HfJHsaY"
   },
   {
     "Title": "The Avengers",
     "Year": 2012,
     "Poster": "https://img.omdbapi.com/?i=tt0848228&apikey=4a68574c",
-    "imdbRating": 8.0,
+    "imdbRating": 8,
     "Runtime": 143,
     "Director": "Joss Whedon",
     "Plot": "Earth's mightiest heroes must come together and learn to fight as a team to protect the world from an alien threat.",
     "Images": "https://img.omdbapi.com/?i=tt0848228&apikey=4a68574c",
     "Actors": "Robert Downey Jr., Chris Evans, Scarlett Johansson",
     "Type": "movie",
-    "Genre": "Action, Sci-Fi"
+    "Genre": "Action, Sci-Fi",
+    "Trailer": "https://www.youtube-nocookie.com/embed/eOrNdBpGMv8"
   },
   {
     "Title": "Breaking Bad",
@@ -179,7 +192,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0903747&apikey=4a68574c",
     "Actors": "Bryan Cranston, Aaron Paul, Anna Gunn",
     "Type": "series",
-    "Genre": "Crime, Drama, Thriller"
+    "Genre": "Crime, Drama, Thriller",
+    "Trailer": null
   },
   {
     "Title": "Game of Thrones",
@@ -192,7 +206,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0944947&apikey=4a68574c",
     "Actors": "Emilia Clarke, Peter Dinklage, Kit Harington",
     "Type": "series",
-    "Genre": "Action, Adventure, Drama"
+    "Genre": "Action, Adventure, Drama",
+    "Trailer": null
   },
   {
     "Title": "Stranger Things",
@@ -205,7 +220,8 @@
     "Images": "https://img.omdbapi.com/?i=tt4574334&apikey=4a68574c",
     "Actors": "Millie Bobby Brown, Finn Wolfhard, Winona Ryder",
     "Type": "series",
-    "Genre": "Drama, Fantasy, Horror"
+    "Genre": "Drama, Fantasy, Horror",
+    "Trailer": null
   },
   {
     "Title": "The Crown",
@@ -218,20 +234,22 @@
     "Images": "https://img.omdbapi.com/?i=tt4786824&apikey=4a68574c",
     "Actors": "Claire Foy, Olivia Colman, Imelda Staunton",
     "Type": "series",
-    "Genre": "Drama, History"
+    "Genre": "Drama, History",
+    "Trailer": null
   },
   {
     "Title": "The Office",
     "Year": 2005,
     "Poster": "https://img.omdbapi.com/?i=tt0386676&apikey=4a68574c",
-    "imdbRating": 9.0,
+    "imdbRating": 9,
     "Runtime": 24,
     "Director": "Greg Daniels",
     "Plot": "A mockumentary on the everyday lives of office employees in the Scranton, Pennsylvania branch of the fictional Dunder Mifflin Paper Company.",
     "Images": "https://img.omdbapi.com/?i=tt0386676&apikey=4a68574c",
     "Actors": "Steve Carell, Jenna Fischer, John Krasinski",
     "Type": "series",
-    "Genre": "Comedy"
+    "Genre": "Comedy",
+    "Trailer": null
   },
   {
     "Title": "Chernobyl",
@@ -244,7 +262,8 @@
     "Images": "https://img.omdbapi.com/?i=tt7366338&apikey=4a68574c",
     "Actors": "Jared Harris, Jessie Buckley, Stellan Skarsgård",
     "Type": "series",
-    "Genre": "Drama, History, Thriller"
+    "Genre": "Drama, History, Thriller",
+    "Trailer": null
   },
   {
     "Title": "The Mandalorian",
@@ -257,7 +276,8 @@
     "Images": "https://img.omdbapi.com/?i=tt8111088&apikey=4a68574c",
     "Actors": "Pedro Pascal, Chris Bartlett, Katee Sackhoff",
     "Type": "series",
-    "Genre": "Action, Adventure, Sci-Fi"
+    "Genre": "Action, Adventure, Sci-Fi",
+    "Trailer": null
   },
   {
     "Title": "Gladiator",
@@ -309,13 +329,14 @@
     "Images": "https://img.omdbapi.com/?i=tt7891728&apikey=4a68574c",
     "Actors": "N/A",
     "Type": "movie",
-    "Genre": "Crime, Drama, Thriller"
+    "Genre": "Crime, Drama, Thriller",
+    "Trailer": null
   },
   {
     "Title": "Dune",
     "Year": 2021,
     "Poster": "https://img.omdbapi.com/?i=tt1160419&apikey=4a68574c",
-    "imdbRating": 8.0,
+    "imdbRating": 8,
     "Runtime": 156,
     "Director": "Denis Villeneuve",
     "Plot": "Paul Atreides, a brilliant young man, must travel to the dangerous planet Dune to ensure the future of his family and people.",
@@ -374,7 +395,8 @@
     "Images": "https://img.omdbapi.com/?i=tt5574490&apikey=4a68574c",
     "Actors": "Shawn Hatosy, Ben Robson, Jake Weary",
     "Type": "series",
-    "Genre": "Drama, Mystery, Sci-Fi"
+    "Genre": "Drama, Mystery, Sci-Fi",
+    "Trailer": null
   },
   {
     "Title": "True Detective",
@@ -387,7 +409,8 @@
     "Images": "https://img.omdbapi.com/?i=tt2356777&apikey=4a68574c",
     "Actors": "Vince Vaughn, Colin Farrell, Rachel McAdams",
     "Type": "series",
-    "Genre": "Crime, Drama, Mystery"
+    "Genre": "Crime, Drama, Mystery",
+    "Trailer": null
   },
   {
     "Title": "Inception 2",
@@ -400,7 +423,8 @@
     "Images": "https://img.omdbapi.com/?i=tt1375667&apikey=4a68574c",
     "Actors": "N/A",
     "Type": "movie",
-    "Genre": "Action, Adventure, Sci-Fi"
+    "Genre": "Action, Adventure, Sci-Fi",
+    "Trailer": null
   },
   {
     "Title": "Oppenheimer",
@@ -413,7 +437,8 @@
     "Images": "https://img.omdbapi.com/?i=tt15398776&apikey=4a68574c",
     "Actors": "Cillian Murphy, Emily Blunt, Matt Damon",
     "Type": "movie",
-    "Genre": "Drama, History, Biography"
+    "Genre": "Drama, History, Biography",
+    "Trailer": null
   },
   {
     "Title": "Barbie",
@@ -426,20 +451,22 @@
     "Images": "https://img.omdbapi.com/?i=tt9369050&apikey=4a68574c",
     "Actors": "Jennylyn Mercado, Dennis Trillo",
     "Type": "movie",
-    "Genre": "Adventure, Comedy, Fantasy"
+    "Genre": "Adventure, Comedy, Fantasy",
+    "Trailer": null
   },
   {
     "Title": "Killers of the Flower Moon",
     "Year": 2023,
     "Poster": "https://img.omdbapi.com/?i=tt5359584&apikey=4a68574c",
-    "imdbRating": 8.0,
+    "imdbRating": 8,
     "Runtime": 206,
     "Director": "Martin Scorsese",
     "Plot": "An FBI investigation into the Osage Nation murders uncovers a web of greed, corruption, and violence.",
     "Images": "https://img.omdbapi.com/?i=tt5359584&apikey=4a68574c",
     "Actors": "Marri Savinar, Anastasia Nguyen, Ricky Wang, Jack Thomas Williams",
     "Type": "movie",
-    "Genre": "Crime, Drama, History"
+    "Genre": "Crime, Drama, History",
+    "Trailer": null
   },
   {
     "Title": "The Last of Us",
@@ -452,20 +479,22 @@
     "Images": "https://img.omdbapi.com/?i=tt3581920&apikey=4a68574c",
     "Actors": "Bella Ramsey, Pedro Pascal, Gabriel Luna",
     "Type": "series",
-    "Genre": "Action, Adventure, Drama"
+    "Genre": "Action, Adventure, Drama",
+    "Trailer": null
   },
   {
     "Title": "The Witcher",
     "Year": 2019,
     "Poster": "https://img.omdbapi.com/?i=tt5180504&apikey=4a68574c",
-    "imdbRating": 8.0,
+    "imdbRating": 8,
     "Runtime": 60,
     "Director": "Lauren Schmidt Hissrich",
     "Plot": "Geralt of Rivia, a solitary monster hunter, strives to find his place in a world where people often prove more wicked than beasts.",
     "Images": "https://img.omdbapi.com/?i=tt5180504&apikey=4a68574c",
     "Actors": "Freya Allan, Anya Chalotra, Eamon Farren",
     "Type": "series",
-    "Genre": "Action, Adventure, Drama"
+    "Genre": "Action, Adventure, Drama",
+    "Trailer": null
   },
   {
     "Title": "Suits",
@@ -478,20 +507,22 @@
     "Images": "https://img.omdbapi.com/?i=tt1632701&apikey=4a68574c",
     "Actors": "Gabriel Macht, Patrick J. Adams, Meghan Markle",
     "Type": "series",
-    "Genre": "Comedy, Drama"
+    "Genre": "Comedy, Drama",
+    "Trailer": null
   },
   {
     "Title": "Better Call Saul",
     "Year": 2015,
     "Poster": "https://img.omdbapi.com/?i=tt3055592&apikey=4a68574c",
-    "imdbRating": 9.0,
+    "imdbRating": 9,
     "Runtime": 47,
     "Director": "Peter Gould, Vince Gilligan",
     "Plot": "The trials and tribulations of criminal lawyer Jimmy McGill, along with his best friend Kim Wexler.",
     "Images": "https://img.omdbapi.com/?i=tt3055592&apikey=4a68574c",
     "Actors": "N/A",
     "Type": "series",
-    "Genre": "Crime, Drama"
+    "Genre": "Crime, Drama",
+    "Trailer": null
   },
   {
     "Title": "House",
@@ -504,7 +535,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0412142&apikey=4a68574c",
     "Actors": "Hugh Laurie, Omar Epps, Robert Sean Leonard",
     "Type": "series",
-    "Genre": "Drama, Mystery"
+    "Genre": "Drama, Mystery",
+    "Trailer": null
   },
   {
     "Title": "Sherlock",
@@ -517,7 +549,8 @@
     "Images": "https://img.omdbapi.com/?i=tt1475582&apikey=4a68574c",
     "Actors": "Benedict Cumberbatch, Martin Freeman, Una Stubbs",
     "Type": "series",
-    "Genre": "Crime, Drama, Mystery"
+    "Genre": "Crime, Drama, Mystery",
+    "Trailer": null
   },
   {
     "Title": "The Simpsons",
@@ -530,7 +563,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0096697&apikey=4a68574c",
     "Actors": "Dan Castellaneta, Nancy Cartwright, Julie Kavner",
     "Type": "series",
-    "Genre": "Animation, Comedy"
+    "Genre": "Animation, Comedy",
+    "Trailer": null
   },
   {
     "Title": "Narcos",
@@ -543,7 +577,8 @@
     "Images": "https://img.omdbapi.com/?i=tt2707408&apikey=4a68574c",
     "Actors": "Pedro Pascal, Wagner Moura, Boyd Holbrook",
     "Type": "series",
-    "Genre": "Crime, Drama, Thriller"
+    "Genre": "Crime, Drama, Thriller",
+    "Trailer": null
   },
   {
     "Title": "The Boys",
@@ -556,7 +591,8 @@
     "Images": "https://img.omdbapi.com/?i=tt6552222&apikey=4a68574c",
     "Actors": "Javier Aníbal, Rodrigo Aragón, Luciana Brek",
     "Type": "series",
-    "Genre": "Action, Comedy, Drama"
+    "Genre": "Action, Comedy, Drama",
+    "Trailer": null
   },
   {
     "Title": "The Bear",
@@ -569,7 +605,8 @@
     "Images": "https://img.omdbapi.com/?i=tt14452776&apikey=4a68574c",
     "Actors": "Jeremy Allen White, Ebon Moss-Bachrach, Ayo Edebiri",
     "Type": "series",
-    "Genre": "Comedy, Drama"
+    "Genre": "Comedy, Drama",
+    "Trailer": null
   },
   {
     "Title": "Euphoria",
@@ -582,7 +619,8 @@
     "Images": "https://img.omdbapi.com/?i=tt8772296&apikey=4a68574c",
     "Actors": "Zendaya, Hunter Schafer, Maude Apatow",
     "Type": "series",
-    "Genre": "Drama"
+    "Genre": "Drama",
+    "Trailer": null
   },
   {
     "Title": "Mindhunter",
@@ -595,7 +633,8 @@
     "Images": "https://img.omdbapi.com/?i=tt5290382&apikey=4a68574c",
     "Actors": "Jonathan Groff, Holt McCallany, Anna Torv",
     "Type": "series",
-    "Genre": "Crime, Drama, Thriller"
+    "Genre": "Crime, Drama, Thriller",
+    "Trailer": null
   },
   {
     "Title": "Ozark",
@@ -608,7 +647,8 @@
     "Images": "https://img.omdbapi.com/?i=tt5398196&apikey=4a68574c",
     "Actors": "N/A",
     "Type": "series",
-    "Genre": "Crime, Drama, Thriller"
+    "Genre": "Crime, Drama, Thriller",
+    "Trailer": null
   },
   {
     "Title": "Peaky Blinders",
@@ -621,7 +661,8 @@
     "Images": "https://img.omdbapi.com/?i=tt2467372&apikey=4a68574c",
     "Actors": "Andy Samberg, Stephanie Beatriz, Terry Crews",
     "Type": "series",
-    "Genre": "Crime, Drama"
+    "Genre": "Crime, Drama",
+    "Trailer": null
   },
   {
     "Title": "The Crown Season 3",
@@ -634,20 +675,22 @@
     "Images": "https://img.omdbapi.com/?i=tt4786825&apikey=4a68574c",
     "Actors": "N/A",
     "Type": "series",
-    "Genre": "Drama, History"
+    "Genre": "Drama, History",
+    "Trailer": null
   },
   {
     "Title": "Squid Game",
     "Year": 2021,
     "Poster": "https://img.omdbapi.com/?i=tt10919420&apikey=4a68574c",
-    "imdbRating": 8.0,
+    "imdbRating": 8,
     "Runtime": 60,
     "Director": "Hwang Dong-hyuk",
     "Plot": "Hundreds of cash-strapped players accept an invitation to compete in children's games for a massive prize, but the stakes are deadly.",
     "Images": "https://img.omdbapi.com/?i=tt10919420&apikey=4a68574c",
     "Actors": "Lee Jung-jae, Wi Ha-joon, Jeon Young-soo",
     "Type": "series",
-    "Genre": "Action, Drama, Thriller"
+    "Genre": "Action, Drama, Thriller",
+    "Trailer": null
   },
   {
     "Title": "Wednesday",
@@ -660,20 +703,22 @@
     "Images": "https://img.omdbapi.com/?i=tt13688814&apikey=4a68574c",
     "Actors": "N/A",
     "Type": "series",
-    "Genre": "Comedy, Crime, Drama"
+    "Genre": "Comedy, Crime, Drama",
+    "Trailer": null
   },
   {
     "Title": "Bridgerton",
     "Year": 2020,
     "Poster": "https://img.omdbapi.com/?i=tt9387433&apikey=4a68574c",
-    "imdbRating": 8.0,
+    "imdbRating": 8,
     "Runtime": 50,
     "Director": "Chris Van Dusen",
     "Plot": "The romantic entanglements and gossip surrounding the aristocratic Bridgerton family set in Regency era England.",
     "Images": "https://img.omdbapi.com/?i=tt9387433&apikey=4a68574c",
     "Actors": "N/A",
     "Type": "series",
-    "Genre": "Drama, Romance"
+    "Genre": "Drama, Romance",
+    "Trailer": null
   },
   {
     "Title": "Atypical",
@@ -686,7 +731,8 @@
     "Images": "https://img.omdbapi.com/?i=tt6348138&apikey=4a68574c",
     "Actors": "Hugh Jackman, David Walliams, Stephen Fry",
     "Type": "series",
-    "Genre": "Comedy, Drama"
+    "Genre": "Comedy, Drama",
+    "Trailer": null
   },
   {
     "Title": "13 Reasons Why",
@@ -699,7 +745,8 @@
     "Images": "https://img.omdbapi.com/?i=tt1837492&apikey=4a68574c",
     "Actors": "Dylan Minnette, Katherine Langford, Christian Navarro",
     "Type": "series",
-    "Genre": "Drama, Mystery"
+    "Genre": "Drama, Mystery",
+    "Trailer": null
   },
   {
     "Title": "Dark",
@@ -712,7 +759,8 @@
     "Images": "https://img.omdbapi.com/?i=tt5753856&apikey=4a68574c",
     "Actors": "Louis Hofmann, Karoline Eichhorn, Lisa Vicari",
     "Type": "series",
-    "Genre": "Crime, Drama, Mystery, Sci-Fi"
+    "Genre": "Crime, Drama, Mystery, Sci-Fi",
+    "Trailer": null
   },
   {
     "Title": "Bodyguard",
@@ -725,20 +773,22 @@
     "Images": "https://img.omdbapi.com/?i=tt7716450&apikey=4a68574c",
     "Actors": "N/A",
     "Type": "series",
-    "Genre": "Action, Drama, Thriller"
+    "Genre": "Action, Drama, Thriller",
+    "Trailer": null
   },
   {
     "Title": "Arrow",
     "Year": 2012,
     "Poster": "https://img.omdbapi.com/?i=tt2193021&apikey=4a68574c",
-    "imdbRating": 8.0,
+    "imdbRating": 8,
     "Runtime": 42,
     "Director": "Greg Berlanti",
     "Plot": "Billionaire Oliver Queen returns to his city as a masked vigilante to fight crime and corruption.",
     "Images": "https://img.omdbapi.com/?i=tt2193021&apikey=4a68574c",
     "Actors": "Stephen Amell, Katie Cassidy, David Ramsey",
     "Type": "series",
-    "Genre": "Action, Crime, Drama"
+    "Genre": "Action, Crime, Drama",
+    "Trailer": null
   },
   {
     "Title": "The Flash",
@@ -751,7 +801,8 @@
     "Images": "https://img.omdbapi.com/?i=tt3107288&apikey=4a68574c",
     "Actors": "Grant Gustin, Candice Patton, Danielle Panabaker",
     "Type": "series",
-    "Genre": "Action, Adventure, Drama"
+    "Genre": "Action, Adventure, Drama",
+    "Trailer": null
   },
   {
     "Title": "The Crown Season 5",
@@ -764,7 +815,8 @@
     "Images": "https://img.omdbapi.com/?i=tt4786826&apikey=4a68574c",
     "Actors": "N/A",
     "Type": "series",
-    "Genre": "Drama, History"
+    "Genre": "Drama, History",
+    "Trailer": null
   },
   {
     "Title": "Money Heist",
@@ -777,7 +829,8 @@
     "Images": "https://img.omdbapi.com/?i=tt6468322&apikey=4a68574c",
     "Actors": "Úrsula Corberó, Álvaro Morte, Itziar Ituño",
     "Type": "series",
-    "Genre": "Action, Crime, Drama"
+    "Genre": "Action, Crime, Drama",
+    "Trailer": null
   },
   {
     "Title": "Hannibal",
@@ -790,7 +843,8 @@
     "Images": "https://img.omdbapi.com/?i=tt2243973&apikey=4a68574c",
     "Actors": "Hugh Dancy, Mads Mikkelsen, Caroline Dhavernas",
     "Type": "series",
-    "Genre": "Crime, Drama, Horror"
+    "Genre": "Crime, Drama, Horror",
+    "Trailer": null
   },
   {
     "Title": "Dexter",
@@ -803,7 +857,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0773262&apikey=4a68574c",
     "Actors": "Michael C. Hall, Jennifer Carpenter, David Zayas",
     "Type": "series",
-    "Genre": "Crime, Drama, Mystery"
+    "Genre": "Crime, Drama, Mystery",
+    "Trailer": null
   },
   {
     "Title": "Prison Break",
@@ -816,7 +871,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0455275&apikey=4a68574c",
     "Actors": "Dominic Purcell, Wentworth Miller, Amaury Nolasco",
     "Type": "series",
-    "Genre": "Action, Crime, Drama"
+    "Genre": "Action, Crime, Drama",
+    "Trailer": null
   },
   {
     "Title": "Lost",
@@ -829,7 +885,8 @@
     "Images": "https://img.omdbapi.com/?i=tt0411008&apikey=4a68574c",
     "Actors": "Jorge Garcia, Josh Holloway, Yunjin Kim",
     "Type": "series",
-    "Genre": "Adventure, Drama, Mystery"
+    "Genre": "Adventure, Drama, Mystery",
+    "Trailer": null
   },
   {
     "Title": "The Haunting of Hill House",
@@ -842,7 +899,8 @@
     "Images": "https://img.omdbapi.com/?i=tt9221526&apikey=4a68574c",
     "Actors": "Kristine Hermosa, Jericho Rosales, Eula Valdez",
     "Type": "series",
-    "Genre": "Drama, Horror, Mystery"
+    "Genre": "Drama, Horror, Mystery",
+    "Trailer": null
   },
   {
     "Title": "The Haunting of Bly Manor",
@@ -855,6 +913,7 @@
     "Images": "https://img.omdbapi.com/?i=tt9221526&apikey=4a68574c",
     "Actors": "Kristine Hermosa, Jericho Rosales, Eula Valdez",
     "Type": "series",
-    "Genre": "Drama, Horror, Romance"
+    "Genre": "Drama, Horror, Romance",
+    "Trailer": null
   }
 ]

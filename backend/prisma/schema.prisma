@@ -20,6 +20,7 @@ model pelicula {
   Actors     String
   Type       String     @default("movie")
   Genre      String     @default("N/A")
+  Trailer    String?
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
   favoritos  Favorito[]

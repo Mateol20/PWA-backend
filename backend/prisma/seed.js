@@ -27,6 +27,11 @@ function extraerImdbId(url) {
   return m ? m[1] : null;
 }
 
+function urlImagenGrande(originalUrl) {
+  if (!originalUrl) return originalUrl;
+  return originalUrl.replace(/([?&]apikey=[^&]+)/, `$1&h=1000`);
+}
+
 const uiTraducciones = {
   es: {
     inicio: "Inicio", favoritos: "Favoritos", cartelera: "Cartelera",
@@ -63,9 +68,14 @@ try {
       if (!imdbId) return p;
 
       const dest = path.join(imagesDir, `${imdbId}.jpg`);
-      if (!fs.existsSync(dest)) {
+      if (!fs.existsSync(dest) || fs.statSync(dest).size < 50000) {
+        const urlGrande = urlImagenGrande(p.Poster);
         console.log(`  Descargando ${imdbId}...`);
-        await descargarImagen(p.Poster, dest);
+        const ok = await descargarImagen(urlGrande, dest);
+        if (!ok && urlGrande !== p.Poster) {
+          console.log(`  Reintentando ${imdbId} sin h=1000...`);
+          await descargarImagen(p.Poster, dest);
+        }
       }
       return { ...p, Poster: `/images/${imdbId}.jpg`, Images: `/images/${imdbId}.jpg` };
     })
