@@ -1,8 +1,31 @@
 import { PrismaClient } from "@prisma/client";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import peliculas from "./seed-data.json" with { type: "json" };
 import traduccionesViejo from "./seed-traducciones.json" with { type: "json" };
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const imagesDir = path.join(__dirname, "..", "public", "images");
 const prisma = new PrismaClient();
+
+async function descargarImagen(url, dest) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const buffer = Buffer.from(await res.arrayBuffer());
+    fs.writeFileSync(dest, buffer);
+    return true;
+  } catch (err) {
+    console.warn(`  ⚠ No se pudo descargar ${url}: ${err.message}`);
+    return false;
+  }
+}
+
+function extraerImdbId(url) {
+  const m = url.match(/[?&]i=(tt\d+)/);
+  return m ? m[1] : null;
+}
 
 const uiTraducciones = {
   es: {
@@ -34,7 +57,21 @@ try {
   await prisma.pelicula.deleteMany();
   await prisma.$executeRawUnsafe('ALTER SEQUENCE "pelicula_Id_seq" RESTART WITH 1');
 
-  await prisma.pelicula.createMany({ data: peliculas });
+  const peliculasConImagen = await Promise.all(
+    peliculas.map(async (p) => {
+      const imdbId = extraerImdbId(p.Poster);
+      if (!imdbId) return p;
+
+      const dest = path.join(imagesDir, `${imdbId}.jpg`);
+      if (!fs.existsSync(dest)) {
+        console.log(`  Descargando ${imdbId}...`);
+        await descargarImagen(p.Poster, dest);
+      }
+      return { ...p, Poster: `/images/${imdbId}.jpg`, Images: `/images/${imdbId}.jpg` };
+    })
+  );
+
+  await prisma.pelicula.createMany({ data: peliculasConImagen });
 
   const traduccionesUnificadas = [];
 
