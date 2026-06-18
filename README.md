@@ -8,6 +8,11 @@
 | Ignacio Bonorino (PM-TP2) | FAI-4863 |
 # PWA-backend
 
+
+- **Frontend:** [https://github.com/Mateol20/PWA-FRONTEND](https://github.com/Mateol20/PWA-FRONTEND)
+- **Deploy frontend:** [https://pwa-frontend-roan.vercel.app](https://pwa-frontend-roan.vercel.app)
+- **Deploy backend:** [https://pwa-backend-omega.vercel.app](https://pwa-backend-omega.vercel.app)
+
 API REST de películas con Express + Prisma + PostgreSQL.
 
 ## Estructura del proyecto
