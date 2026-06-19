@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import peliculasRouter from "./routes/pelicula.routes.js";
 import translationsRouter from "./routes/translations.routes.js";
 import adminRouter from "./routes/admin.routes.js";
+import { setupSwagger } from "./swagger.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -32,6 +33,8 @@ app.use("/api/translations", translationsRouter);
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "API funcionando correctamente" });
 });
+
+setupSwagger(app);
 
 app.use("/api/peliculas", peliculasRouter);
 app.use("/api/admin", adminRouter);
