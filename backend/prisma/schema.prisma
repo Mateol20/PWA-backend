@@ -20,22 +20,20 @@ model pelicula {
   Actors     String
   Type       String     @default("movie")
   Genre      String     @default("N/A")
+  Trailer    String?
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
-  traducciones pelicula_traduccion[]
   favoritos  Favorito[]
 }
 
-model pelicula_traduccion {
-  id         Int      @id @default(autoincrement())
-  peliculaId Int
-  idioma     String
-  sinopsis   String
-  genero     String?
+model Traduccion {
+  id      Int    @id @default(autoincrement())
+  entidad String // "ui" para interfaz, o el id de película como string para contenido
+  clave   String // "inicio", "sinopsis", "genero"
+  idioma  String // "es", "en"
+  valor   String
 
-  pelicula   pelicula @relation(fields: [peliculaId], references: [Id], onDelete: Cascade)
-
-  @@unique([peliculaId, idioma])
+  @@unique([entidad, clave, idioma])
 }
 
 model Usuario {
