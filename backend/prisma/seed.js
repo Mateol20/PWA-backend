@@ -112,7 +112,7 @@ try {
   await prisma.traduccion.createMany({ data: traduccionesUnificadas });
   const { hashSync } = await import("bcrypt");
   await prisma.user.create({
-    data: { name: "Admin", email: "admin@example.com", password: hashSync("admin123", 10) },
+    data: { name: "Admin", email: "admin@example.com", password: hashSync("admin123", 10), role: "admin" },
   });
 
   console.log(`Seed ejecutado: ${peliculas.length} películas, ${traduccionesUnificadas.length} traducciones`);
