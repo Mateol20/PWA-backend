@@ -36,19 +36,22 @@ model Traduccion {
   @@unique([entidad, clave, idioma])
 }
 
-model Usuario {
-  Id          Int        @id @default(autoincrement())
-  nombre      String     @unique @default("Admin")
-  contrasenia String
-  favoritos   Favorito[]
+model User {
+  Id        Int        @id @default(autoincrement())
+  name      String
+  email     String     @unique
+  password  String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  favoritos Favorito[]
 }
 
 model Favorito {
-  Id          Int      @id @default(autoincrement())
-  idPelicula  Int
-  idUsuario   Int
-  usuario     Usuario  @relation(fields: [idUsuario], references: [Id])
-  pelicula    pelicula @relation(fields: [idPelicula], references: [Id])
+  Id      Int      @id @default(autoincrement())
+  movieId Int
+  userId  Int
+  user    User     @relation(fields: [userId], references: [Id])
+  movie   pelicula @relation(fields: [movieId], references: [Id])
 
-  @@unique([idUsuario, idPelicula])
+  @@unique([userId, movieId])
 }

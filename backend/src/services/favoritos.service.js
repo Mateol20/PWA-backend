@@ -1,13 +1,13 @@
 import prisma from "../prisma/prismaClient.js";
 
-export async function getAllFavorito({ page = 1, limit = 8, search = "", idUsuario } = {}) {
+export async function getAllFavorito({ page = 1, limit = 8, search = "", userId } = {}) {
   const skip = (page - 1) * limit;
 
   const where = {
-    idUsuario,
+    userId,
     ...(search
       ? {
-          pelicula: {
+          movie: {
             OR: [
               { Title: { contains: search, mode: "insensitive" } },
               { Director: { contains: search, mode: "insensitive" } },
@@ -22,7 +22,7 @@ export async function getAllFavorito({ page = 1, limit = 8, search = "", idUsuar
       skip,
       take: limit,
       where,
-      include: { pelicula: true },
+      include: { movie: true },
       orderBy: { id: "asc" },
     }),
     prisma.favorito.count({ where }),
