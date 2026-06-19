@@ -1,11 +1,9 @@
-import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
 import peliculasRouter from "./routes/pelicula.routes.js";
 import translationsRouter from "./routes/translations.routes.js";
-import authRouter from "./routes/auth.routes.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -35,7 +33,6 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api/peliculas", peliculasRouter);
-app.use("/api/auth", authRouter);
 
 app.use(errorHandler);
 
