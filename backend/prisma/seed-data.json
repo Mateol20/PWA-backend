@@ -327,7 +327,7 @@
     "Director": "Todd Phillips",
     "Plot": "In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime.",
     "Images": "https://img.omdbapi.com/?i=tt7286456&apikey=4a68574c",
-    "Actors": "N/A",
+    "Actors": "Joaquin Phoenix, Robert De Niro, Zazie Beetz",
     "Type": "movie",
     "Genre": "Crime, Drama, Thriller",
     "Trailer": null
@@ -421,7 +421,7 @@
     "Director": "Christopher Nolan",
     "Plot": "A skilled thief and his team continue their work in shared dreams.",
     "Images": "/images/tt1375667.jpg",
-    "Actors": "N/A",
+    "Actors": "Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page",
     "Type": "movie",
     "Genre": "Action, Adventure, Sci-Fi",
     "Trailer": null
@@ -519,7 +519,7 @@
     "Director": "Peter Gould, Vince Gilligan",
     "Plot": "The trials and tribulations of criminal lawyer Jimmy McGill, along with his best friend Kim Wexler.",
     "Images": "https://img.omdbapi.com/?i=tt3032476&apikey=4a68574c",
-    "Actors": "N/A",
+    "Actors": "Bob Odenkirk, Rhea Seehorn, Jonathan Banks",
     "Type": "series",
     "Genre": "Crime, Drama",
     "Trailer": null
@@ -645,7 +645,7 @@
     "Director": "Bill Dubuque",
     "Plot": "A financial planner is forced to launder money for a drug boss when his wife and business partner have an affair.",
     "Images": "https://img.omdbapi.com/?i=tt5071412&apikey=4a68574c",
-    "Actors": "N/A",
+    "Actors": "Jason Bateman, Laura Linney, Sofia Hublitz",
     "Type": "series",
     "Genre": "Crime, Drama, Thriller",
     "Trailer": null
@@ -673,7 +673,7 @@
     "Director": "Peter Morgan",
     "Plot": "Follows the political rivalries and romance of Queen Elizabeth II in her 1960s era.",
     "Images": "/images/tt4786825.jpg",
-    "Actors": "N/A",
+    "Actors": "Olivia Colman, Tobias Menzies, Helena Bonham Carter",
     "Type": "series",
     "Genre": "Drama, History",
     "Trailer": null
@@ -701,7 +701,7 @@
     "Director": "Tim Burton",
     "Plot": "Wednesday Addams is sent to Nevermore Academy, a mysterious school where she uncovers the cause of a monster uprising.",
     "Images": "https://img.omdbapi.com/?i=tt13443470&apikey=4a68574c",
-    "Actors": "N/A",
+    "Actors": "Jenna Ortega, Emma Myers, Hunter Doohan",
     "Type": "series",
     "Genre": "Comedy, Crime, Drama",
     "Trailer": null
@@ -715,7 +715,7 @@
     "Director": "Chris Van Dusen",
     "Plot": "The romantic entanglements and gossip surrounding the aristocratic Bridgerton family set in Regency era England.",
     "Images": "https://img.omdbapi.com/?i=tt8740790&apikey=4a68574c",
-    "Actors": "N/A",
+    "Actors": "Nicola Coughlan, Luke Thompson, Florence Hunt",
     "Type": "series",
     "Genre": "Drama, Romance",
     "Trailer": null
@@ -765,13 +765,13 @@
   {
     "Title": "Bodyguard",
     "Year": 2018,
-    "Poster": "https://img.omdbapi.com/?i=tt7660850&apikey=4a68574c",
+    "Poster": "https://img.omdbapi.com/?i=tt7493974&apikey=4a68574c",
     "imdbRating": 8.1,
     "Runtime": 60,
     "Director": "Jed Mercurio",
     "Plot": "A war veteran serving as a bodyguard to a controversial politician unravels a conspiracy that threatens the nation.",
-    "Images": "https://img.omdbapi.com/?i=tt7660850&apikey=4a68574c",
-    "Actors": "N/A",
+    "Images": "https://img.omdbapi.com/?i=tt7493974&apikey=4a68574c",
+    "Actors": "Richard Madden, Keeley Hawes, Sophie Rundle",
     "Type": "series",
     "Genre": "Action, Drama, Thriller",
     "Trailer": null
@@ -813,7 +813,7 @@
     "Director": "Peter Morgan",
     "Plot": "Political rivalries and romance between Queen Elizabeth II and the British Royal Family continue.",
     "Images": "/images/tt4786826.jpg",
-    "Actors": "N/A",
+    "Actors": "Imelda Staunton, Jonathan Pryce, Lesley Manville",
     "Type": "series",
     "Genre": "Drama, History",
     "Trailer": null
