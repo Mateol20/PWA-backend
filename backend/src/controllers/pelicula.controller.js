@@ -117,7 +117,7 @@ export async function toggleFavorito(req, res, next) {
 
 export async function getFavoritos(req, res, next) {
   try {
-    const userId = Number(req.query.userId) || 1;
+    const userId = Number(req.query.userId || req.query.idUsuario) || 1;
     const favoritas = await prisma.favorito.findMany({
       where: { userId },
       include: { movie: true },

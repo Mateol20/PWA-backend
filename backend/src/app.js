@@ -13,17 +13,18 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 const frontendUrl = process.env.FRONTEND_URL || "https://pwa-frontend-roan.vercel.app";
-const origenesPermitidos = [
-  frontendUrl,
-  "http://localhost:5173",
-  "http://localhost:4173",
-];
-app.use(cors({
-  origin: (origin, cb) => {
-    if (!origin || origenesPermitidos.includes(origin)) return cb(null, true);
-    cb(null, false);
-  },
-}));
+
+function originPermitida(origin) {
+  if (!origin) return true;
+  if (origin === frontendUrl || origin === "https://pwa-frontend-roan.vercel.app") return true;
+  try {
+    const url = new URL(origin);
+    if (url.hostname === "localhost" || url.hostname === "127.0.0.1") return true;
+  } catch {}
+  return false;
+}
+
+app.use(cors({ origin: originPermitida }));
 app.use(express.json());
 app.use("/images", (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
