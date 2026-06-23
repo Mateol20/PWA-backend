@@ -65,24 +65,15 @@ model Favorito { ... }      // Relación usuario-película (favoritos)
 
 ### 1. Clonar el repositorio
 ```bash
-git clone <url-del-repositorio>
+git clone https://github.com/Mateol20/PWA-backend.git
 cd PWA-backend
 ```
 
-### 2. Configurar variables de entorno
-Crear un archivo `.env` en `backend/`:
-
-```env
-# Local: PostgreSQL con Docker
-DATABASE_URL="postgresql://USUARIO:PASSWORD@localhost:5432/NOMBRE_DB"
-
-# Producción: Neon (cloud) — remplazar con la URL que te da Neon
-# DATABASE_URL="postgresql://usuario:password@ep-xxxx.us-east-2.aws.neon.tech/nombre-db?sslmode=require"
-
-PORT=3000
-FRONTEND_URL=http://localhost:5173
-JWT_SECRET=cambiame-en-produccion
+### 2. Crear archivo de entorno
+```bash
+cp backend/.env.example backend/.env
 ```
+Editar `backend/.env` si es necesario (los valores por defecto funcionan con Docker).
 
 ### 3. Iniciar la base de datos (PostgreSQL con Docker)
 ```bash
@@ -144,9 +135,18 @@ Tests de integración con **Vitest + Supertest**. Requieren PostgreSQL corriendo
 | `GET` | `/api/peliculas/genero/:genero` | Películas por género (paginado) | 200, 400 |
 | `GET` | `/api/peliculas/favoritas` | Favoritos de un usuario | 200, 500 |
 | `PATCH` | `/api/peliculas/:id/favorito` | Alternar favorito | 200, 500 |
-| `GET` | `/api/translations` | Traducciones de interfaz | 200 |
+| `GET` | `/api/translations/:lang` | Traducciones de interfaz (`/es`, `/en`) | 200, 404 |
 
-### Admin (sin autenticación por ahora)
+### Autenticación
+
+| Método | Ruta | Descripción |
+|--------|------|-------------|
+| `POST` | `/api/auth/register` | Registro de usuario |
+| `POST` | `/api/auth/login` | Inicio de sesión |
+| `POST` | `/api/auth/refresh` | Refrescar token |
+| `POST` | `/api/auth/logout` | Cerrar sesión |
+
+### Admin
 
 | Método | Ruta | Descripción |
 |--------|------|-------------|

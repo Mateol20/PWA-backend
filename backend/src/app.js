@@ -6,25 +6,26 @@ import rateLimit from "express-rate-limit";
 import peliculasRouter from "./routes/pelicula.routes.js";
 import translationsRouter from "./routes/translations.routes.js";
 import adminRouter from "./routes/admin.routes.js";
+import authRouter from "./routes/auth.routes.js";
 import { setupSwagger } from "./swagger.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
-const frontendUrl = process.env.FRONTEND_URL || "https://pwa-frontend-roan.vercel.app";
-
-function originPermitida(origin) {
-  if (!origin) return true;
-  if (origin === frontendUrl || origin === "https://pwa-frontend-roan.vercel.app") return true;
-  try {
-    const url = new URL(origin);
-    if (url.hostname === "localhost" || url.hostname === "127.0.0.1") return true;
-  } catch {}
-  return false;
+const origenesPermitidos = [
+  "http://localhost:5173",
+  "http://localhost:4173",
+];
+if (process.env.FRONTEND_URL) {
+  origenesPermitidos.push(process.env.FRONTEND_URL);
 }
-
-app.use(cors({ origin: originPermitida }));
+app.use(cors({
+  origin: (origin, cb) => {
+    if (!origin || origenesPermitidos.includes(origin)) return cb(null, true);
+    cb(null, false);
+  },
+}));
 app.use(express.json());
 app.use("/images", (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -52,6 +53,7 @@ const limiterAdmin = rateLimit({
 
 app.use("/api/peliculas", limiterGeneral, peliculasRouter);
 app.use("/api/admin", limiterAdmin, adminRouter);
+app.use("/api/auth", limiterGeneral, authRouter);
 
 app.use(errorHandler);
 
