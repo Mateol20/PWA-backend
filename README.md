@@ -55,10 +55,11 @@ cd PWA-backend
 
 ### 2. Configurar variables de entorno
 Crear un archivo `.env` en `backend/` con el siguiente contenido:
+Crear un archivo `.env` en `backend/`:
+
 ```env
-DATABASE_URL="postgresql://pwa-backend-user:pwa@localhost:5432/pwa-backend-db"
-PORT=3000
-FRONTEND_URL=http://localhost:5173
+# Local: PostgreSQL con Docker
+DATABASE_URL="postgresql://USUARIO:PASSWORD@localhost:5432/NOMBRE_DB"
 ```
 
 ### 3. Iniciar la base de datos (PostgreSQL con Docker)
