@@ -67,7 +67,7 @@ const uiTraducciones = {
 
 try {
   await prisma.favorito.deleteMany();
-  await prisma.usuario.deleteMany();
+  await prisma.user.deleteMany();
   await prisma.traduccion.deleteMany();
   await prisma.pelicula.deleteMany();
   await prisma.$executeRawUnsafe('ALTER SEQUENCE "pelicula_Id_seq" RESTART WITH 1');
@@ -110,7 +110,10 @@ try {
   }
 
   await prisma.traduccion.createMany({ data: traduccionesUnificadas });
-  await prisma.usuario.create({ data: { nombre: "Admin", contrasenia: "admin123" } });
+  const { hashSync } = await import("bcrypt");
+  await prisma.user.create({
+    data: { name: "Admin", email: "admin@example.com", password: hashSync("admin123", 10), role: "admin" },
+  });
 
   console.log(`Seed ejecutado: ${peliculas.length} películas, ${traduccionesUnificadas.length} traducciones`);
 } catch (error) {
