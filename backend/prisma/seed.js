@@ -42,6 +42,11 @@ const uiTraducciones = {
     actores: "Actores", sinopsis: "Sinopsis", publicadoEn: "Publicado en",
     sinResultados: "No se encontraron películas para esta búsqueda.",
     cargando: "Cargando...", sinPoster: "Sin Poster", sinImagen: "Imagen No Encontrada",
+    todo: "Todo", peliculas: "Películas", series: "Series", trailer: "Trailer",
+    verTrailer: "Ver trailer en YouTube",
+    duracion: "Duración", medios: "Medios", usuarios: "Usuarios",
+    amigos: "Amigos", quieroVer: "Quiero ver", puntuar: "Puntuar",
+    descargarPDF: "Descargar PDF", favorito: "Favorito", notas: "notas",
   },
   en: {
     inicio: "Home", favoritos: "Favorites", cartelera: "Showtime",
@@ -52,6 +57,11 @@ const uiTraducciones = {
     actores: "Actors", sinopsis: "Plot", publicadoEn: "Released in",
     sinResultados: "No movies found for this search.",
     cargando: "Loading...", sinPoster: "No Poster", sinImagen: "Image Not Found",
+    todo: "All", peliculas: "Movies", series: "Series", trailer: "Trailer",
+    verTrailer: "Watch trailer on YouTube",
+    duracion: "Duration", medios: "Media", usuarios: "Users",
+    amigos: "Friends", quieroVer: "Want to watch", puntuar: "Rate",
+    descargarPDF: "Download PDF", favorito: "Favorite", notas: "ratings",
   },
 };
 

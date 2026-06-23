@@ -23,7 +23,12 @@ export async function getAll({ page = 1, limit = 8, search = "", lang } = {}) {
       }
     : {};
 
-  const data = await prisma.pelicula.findMany({ skip, take: limit, where, orderBy: { Id: "asc" } });
+  const data = await prisma.pelicula.findMany({
+    skip,
+    take: limit,
+    where,
+    orderBy: { Id: "asc" },
+  });
   const total = await prisma.pelicula.count({ where });
 
   if (lang && data.length > 0) {
@@ -65,4 +70,24 @@ export async function update(id, data) {
 
 export async function remove(id) {
   await prisma.pelicula.delete({ where: { Id: id } });
+}
+export async function getByGenero(genero, lang) {
+  if (!genero) return [];
+  const peliculas = await prisma.pelicula.findMany({
+    where: { Genre: { contains: genero, mode: "insensitive" } },
+    orderBy: { Id: "asc" },
+  });
+
+  if (lang && peliculas.length > 0) {
+    const ids = peliculas.map((p) => String(p.Id));
+    const traducciones = await prisma.traduccion.findMany({
+      where: { entidad: { in: ids }, idioma: lang },
+    });
+    return peliculas.map((p) => {
+      const t = traducciones.filter((tr) => tr.entidad === String(p.Id));
+      return aplicarTraduccion(p, t);
+    });
+  }
+
+  return peliculas;
 }

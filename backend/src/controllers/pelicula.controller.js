@@ -131,3 +131,19 @@ export async function getFavoritos(req, res, next) {
     next(error);
   }
 }
+
+export async function getByGenero(req, res, next) {
+  try {
+    const { genero } = req.params;
+    const { lang } = req.query;
+    if (!genero) {
+      return res
+        .status(400)
+        .json({ error: "El parámetro 'genero' es requerido" });
+    }
+    const peliculas = await peliculaService.getByGenero(genero, lang);
+    res.json(peliculas);
+  } catch (error) {
+    next(error);
+  }
+}

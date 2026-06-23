@@ -22,7 +22,10 @@ app.use(cors({
   },
 }));
 app.use(express.json());
-app.use("/images", express.static(path.join(__dirname, "..", "public", "images")));
+app.use("/images", (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+}, express.static(path.join(__dirname, "..", "public", "images")));
 app.use("/api/translations", translationsRouter);
 
 app.get("/api/health", (req, res) => {
