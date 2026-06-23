@@ -4,9 +4,9 @@ import prisma from "../prisma/prismaClient.js";
 
 export async function getAll(req, res) {
   try {
-    const { page, limit, search, lang } = req.query;
+    const { cursor, limit, search, lang } = req.query;
     const result = await peliculaService.getAll({
-      page: page ? parseInt(page) : undefined,
+      cursor: cursor ? parseInt(cursor) : undefined,
       limit: limit ? parseInt(limit) : undefined,
       search,
       lang,
@@ -135,13 +135,13 @@ export async function getFavoritos(req, res, next) {
 export async function getByGenero(req, res, next) {
   try {
     const { genero } = req.params;
-    const { lang } = req.query;
+    const { lang, page = 1, limit = 20 } = req.query;
     if (!genero) {
       return res
         .status(400)
         .json({ error: "El parámetro 'genero' es requerido" });
     }
-    const peliculas = await peliculaService.getByGenero(genero, lang);
+    const peliculas = await peliculaService.getByGenero(genero, lang, Number(page), Number(limit));
     res.json(peliculas);
   } catch (error) {
     next(error);

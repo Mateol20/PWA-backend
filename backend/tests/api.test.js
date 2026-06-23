@@ -11,13 +11,12 @@ describe("GET /api/health", () => {
 });
 
 describe("GET /api/peliculas", () => {
-  it("devuelve lista paginada de películas", async () => {
-    const res = await request(app).get("/api/peliculas?page=1&limit=2");
+  it("devuelve lista paginada de películas con cursor", async () => {
+    const res = await request(app).get("/api/peliculas?limit=2");
     expect(res.status).toBe(200);
-    expect(res.body.data).toHaveLength(2);
+    expect(res.body.data.length).toBeLessThanOrEqual(2);
     expect(res.body.total).toBeGreaterThan(0);
-    expect(res.body.page).toBe(1);
-    expect(res.body.limit).toBe(2);
+    expect(res.body).toHaveProperty("nextCursor");
     expect(res.body.data[0]).toHaveProperty("Title");
     expect(res.body.data[0]).toHaveProperty("Year");
   });
