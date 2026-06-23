@@ -76,8 +76,6 @@ Crear un archivo `.env` en `backend/`:
 # Local: PostgreSQL con Docker
 DATABASE_URL="postgresql://USUARIO:PASSWORD@localhost:5432/NOMBRE_DB"
 
-# Producción: Neon (cloud) — remplazar con la URL que te da Neon
-# DATABASE_URL="postgresql://usuario:password@ep-xxxx.us-east-2.aws.neon.tech/nombre-db?sslmode=require"
 
 PORT=3000
 FRONTEND_URL=http://localhost:5173
