@@ -6,6 +6,7 @@ import rateLimit from "express-rate-limit";
 import peliculasRouter from "./routes/pelicula.routes.js";
 import translationsRouter from "./routes/translations.routes.js";
 import adminRouter from "./routes/admin.routes.js";
+import authRouter from "./routes/auth.routes.js";
 import { setupSwagger } from "./swagger.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
@@ -21,7 +22,7 @@ const origenesPermitidos = [
 app.use(cors({
   origin: (origin, cb) => {
     if (!origin || origenesPermitidos.includes(origin)) return cb(null, true);
-    cb(null, false);
+    cb(null, origin);
   },
 }));
 app.use(express.json());
@@ -51,6 +52,7 @@ const limiterAdmin = rateLimit({
 
 app.use("/api/peliculas", limiterGeneral, peliculasRouter);
 app.use("/api/admin", limiterAdmin, adminRouter);
+app.use("/api/auth", limiterGeneral, authRouter);
 
 app.use(errorHandler);
 

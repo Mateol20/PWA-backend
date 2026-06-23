@@ -117,6 +117,77 @@ const swaggerDocument = {
         responses: { "200": { description: "Película eliminada" } },
       },
     },
+    "/api/auth/register": {
+      post: {
+        summary: "Registrar un nuevo usuario",
+        tags: ["Auth"],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: { $ref: "#/components/schemas/RegisterInput" },
+            },
+          },
+        },
+        responses: {
+          "201": { description: "Usuario registrado", content: { "application/json": { schema: { $ref: "#/components/schemas/AuthResponse" } } } },
+          "409": { description: "Email ya existe" },
+        },
+      },
+    },
+    "/api/auth/login": {
+      post: {
+        summary: "Iniciar sesión",
+        tags: ["Auth"],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: { $ref: "#/components/schemas/LoginInput" },
+            },
+          },
+        },
+        responses: {
+          "200": { description: "Login exitoso", content: { "application/json": { schema: { $ref: "#/components/schemas/AuthResponse" } } } },
+          "401": { description: "Credenciales inválidas" },
+        },
+      },
+    },
+    "/api/auth/refresh": {
+      post: {
+        summary: "Renovar access token",
+        tags: ["Auth"],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: { $ref: "#/components/schemas/RefreshInput" },
+            },
+          },
+        },
+        responses: {
+          "200": { description: "Token renovado", content: { "application/json": { schema: { $ref: "#/components/schemas/AuthResponse" } } } },
+          "401": { description: "Refresh token inválido o expirado" },
+        },
+      },
+    },
+    "/api/auth/logout": {
+      post: {
+        summary: "Cerrar sesión (invalida el refresh token)",
+        tags: ["Auth"],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: { $ref: "#/components/schemas/RefreshInput" },
+            },
+          },
+        },
+        responses: {
+          "200": { description: "Logout exitoso" },
+        },
+      },
+    },
     "/api/translations/{lang}": {
       get: {
         summary: "Obtener traducciones UI por idioma",
@@ -126,7 +197,55 @@ const swaggerDocument = {
     },
   },
   components: {
+    securitySchemes: {
+      BearerAuth: {
+        type: "http",
+        scheme: "bearer",
+        bearerFormat: "JWT",
+      },
+    },
     schemas: {
+      RegisterInput: {
+        type: "object",
+        required: ["email", "password", "name"],
+        properties: {
+          name: { type: "string", example: "Juan Pérez" },
+          email: { type: "string", format: "email", example: "juan@example.com" },
+          password: { type: "string", format: "password", example: "miPassword123" },
+        },
+      },
+      LoginInput: {
+        type: "object",
+        required: ["email", "password"],
+        properties: {
+          email: { type: "string", format: "email", example: "juan@example.com" },
+          password: { type: "string", format: "password", example: "miPassword123" },
+        },
+      },
+      RefreshInput: {
+        type: "object",
+        required: ["refreshToken"],
+        properties: {
+          refreshToken: { type: "string", example: "uuid-del-refresh-token" },
+        },
+      },
+      AuthResponse: {
+        type: "object",
+        properties: {
+          user: { $ref: "#/components/schemas/User" },
+          accessToken: { type: "string" },
+          refreshToken: { type: "string" },
+        },
+      },
+      User: {
+        type: "object",
+        properties: {
+          Id: { type: "integer" },
+          name: { type: "string" },
+          email: { type: "string" },
+          role: { type: "string" },
+        },
+      },
       PeliculaInput: {
         type: "object",
         required: ["Title", "Year", "Poster", "Director", "Plot", "Images", "Actors", "imdbRating", "Runtime"],
