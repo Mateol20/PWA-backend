@@ -24,20 +24,28 @@ PWA-backend/
     │   ├── prisma/
     │   │   └── prismaClient.js               # Singleton de PrismaClient
     │   ├── routes/
-    │   │   ├── pelicula.routes.js            # Rutas públicas de películas + favoritos
-    │   │   ├── admin.routes.js               # Rutas CRUD admin (usuarios y películas)
+    │   │   ├── pelicula.routes.js            # Rutas públicas de películas
+    │   │   ├── favoritos.routes.js           # Rutas de favoritos (protegidas con JWT)
+    │   │   ├── auth.routes.js                # Rutas de autenticación (login, register, refresh, logout, me)
+    │   │   ├── admin.routes.js               # Rutas CRUD admin (protegidas con JWT + admin role)
     │   │   └── translations.routes.js        # Rutas de traducciones
     │   ├── controllers/
-    │   │   ├── pelicula.controller.js        # Handlers de películas y favoritos
+    │   │   ├── pelicula.controller.js        # Handlers CRUD de películas
+    │   │   ├── favoritos.controller.js       # Handlers de favoritos
+    │   │   ├── auth.controller.js            # Handlers de autenticación
     │   │   ├── admin.controller.js           # Handlers CRUD de usuarios
     │   │   └── admin.movie.controller.js     # Handlers CRUD de películas (admin)
     │   ├── services/
     │   │   ├── pelicula.service.js           # Lógica de negocio con Prisma (cursor-based pagination)
+    │   │   ├── favoritos.service.js          # Lógica de favoritos
+    │   │   ├── auth.service.js               # Lógica de autenticación (JWT, bcrypt, refresh tokens)
     │   │   ├── admin.service.js              # Lógica CRUD de usuarios
     │   │   └── admin.movie.service.js        # Lógica CRUD de películas (admin)
     │   ├── validations/
-    │   │   └── pelicula.validation.js        # Validación manual del body
+    │   │   ├── pelicula.validation.js        # Validación manual del body de películas
+    │   │   └── auth.validation.js            # Validación de email y password
     │   ├── middlewares/
+    │   │   ├── auth.js                       # Middleware authenticate + requireAdmin (JWT)
     │   │   └── errorHandler.js               # Middleware global de errores
     │   └── swagger.js                        # Documentación OpenAPI / Swagger UI
     ├── prisma/
@@ -133,31 +141,54 @@ Tests de integración con **Vitest + Supertest**. Requieren PostgreSQL corriendo
 | `GET` | `/api/peliculas` | Lista paginada (cursor-based) | 200, 500 |
 | `GET` | `/api/peliculas/:id` | Película por ID | 200, 404, 500 |
 | `GET` | `/api/peliculas/genero/:genero` | Películas por género (paginado) | 200, 400 |
-| `GET` | `/api/peliculas/favoritas` | Favoritos de un usuario | 200, 500 |
-| `PATCH` | `/api/peliculas/:id/favorito` | Alternar favorito | 200, 500 |
 | `GET` | `/api/translations/:lang` | Traducciones de interfaz (`/es`, `/en`) | 200, 404 |
 
 ### Autenticación
 
-| Método | Ruta | Descripción |
-|--------|------|-------------|
-| `POST` | `/api/auth/register` | Registro de usuario |
-| `POST` | `/api/auth/login` | Inicio de sesión |
-| `POST` | `/api/auth/refresh` | Refrescar token |
-| `POST` | `/api/auth/logout` | Cerrar sesión |
+| Método | Ruta | Descripción | Códigos HTTP |
+|--------|------|-------------|--------------|
+| `POST` | `/api/auth/register` | Registro de usuario (`name`, `email`, `password`) | 201, 400, 409 |
+| `POST` | `/api/auth/login` | Inicio de sesión (`email`, `password`) | 200, 400, 401 |
+| `POST` | `/api/auth/refresh` | Refrescar token (`refreshToken`) | 200, 400, 401 |
+| `POST` | `/api/auth/logout` | Cerrar sesión (`refreshToken`) | 200 |
+| `GET` | `/api/auth/me` | Datos del usuario autenticado (requiere Bearer token) | 200, 401, 404 |
 
-### Admin
+**Ejemplo login:**
+```json
+// POST /api/auth/login
+{ "email": "admin@admin.com", "password": "admin" }
 
-| Método | Ruta | Descripción |
-|--------|------|-------------|
-| `GET` | `/api/admin/users` | Listar usuarios |
-| `POST` | `/api/admin/users` | Crear usuario |
-| `PUT` | `/api/admin/users/:id` | Actualizar usuario |
-| `DELETE` | `/api/admin/users/:id` | Eliminar usuario |
-| `GET` | `/api/admin/movies` | Listar películas |
-| `POST` | `/api/admin/movies` | Crear película |
-| `PUT` | `/api/admin/movies/:id` | Actualizar película |
-| `DELETE` | `/api/admin/movies/:id` | Eliminar película |
+// Respuesta 200
+{
+  "user": { "Id": 12, "email": "admin@admin.com", "name": "Admin", "role": "admin" },
+  "accessToken": "eyJ...",
+  "refreshToken": "uuid..."
+}
+```
+
+### Favoritos (requieren JWT)
+
+| Método | Ruta | Descripción | Códigos HTTP |
+|--------|------|-------------|--------------|
+| `GET` | `/api/favoritos` | Lista favoritos del usuario autenticado | 200, 401 |
+| `POST` | `/api/favoritos/:movieId` | Alternar favorito (agrega/saca) | 200, 401 |
+
+Incluir header: `Authorization: Bearer <accessToken>`
+
+### Admin (requieren JWT + role admin)
+
+Todas las rutas admin requieren `Authorization: Bearer <accessToken>` y que el usuario tenga role `admin`.
+
+| Método | Ruta | Descripción | Códigos HTTP |
+|--------|------|-------------|--------------|
+| `GET` | `/api/admin/users` | Listar usuarios | 200, 401, 403 |
+| `POST` | `/api/admin/users` | Crear usuario | 201, 400, 401, 403, 409 |
+| `PUT` | `/api/admin/users/:id` | Actualizar usuario | 200, 401, 403, 404 |
+| `DELETE` | `/api/admin/users/:id` | Eliminar usuario | 200, 401, 403, 404 |
+| `GET` | `/api/admin/movies` | Listar películas | 200, 401, 403 |
+| `POST` | `/api/admin/movies` | Crear película | 201, 400, 401, 403 |
+| `PUT` | `/api/admin/movies/:id` | Actualizar película | 200, 401, 403, 404 |
+| `DELETE` | `/api/admin/movies/:id` | Eliminar película | 200, 401, 403, 404 |
 
 ### Documentación interactiva
 

@@ -4,6 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import rateLimit from "express-rate-limit";
 import peliculasRouter from "./routes/pelicula.routes.js";
+import favoritosRouter from "./routes/favoritos.routes.js";
 import translationsRouter from "./routes/translations.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import authRouter from "./routes/auth.routes.js";
@@ -52,6 +53,7 @@ const limiterAdmin = rateLimit({
 });
 
 app.use("/api/peliculas", limiterGeneral, peliculasRouter);
+app.use("/api/favoritos", limiterGeneral, favoritosRouter);
 app.use("/api/admin", limiterAdmin, adminRouter);
 app.use("/api/auth", limiterGeneral, authRouter);
 

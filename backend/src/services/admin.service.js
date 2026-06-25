@@ -16,9 +16,11 @@ export async function create(data) {
     throw err;
   }
   const hash = await bcrypt.hash(data.password, 10);
-  return prisma.user.create({
+  const user = await prisma.user.create({
     data: { name: data.name, email: data.email, password: hash, role: data.role || "user" },
   });
+  delete user.password;
+  return user;
 }
 
 export async function update(id, data) {
@@ -27,7 +29,9 @@ export async function update(id, data) {
   if (data.email) payload.email = data.email;
   if (data.role) payload.role = data.role;
   if (data.password) payload.password = await bcrypt.hash(data.password, 10);
-  return prisma.user.update({ where: { Id: id }, data: payload });
+  const user = await prisma.user.update({ where: { Id: id }, data: payload });
+  delete user.password;
+  return user;
 }
 
 export async function remove(id) {

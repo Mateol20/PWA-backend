@@ -1,6 +1,5 @@
 import * as peliculaService from "../services/pelicula.service.js";
 import { validarPelicula } from "../validations/pelicula.validation.js";
-import prisma from "../prisma/prismaClient.js";
 
 export async function getAll(req, res) {
   try {
@@ -79,59 +78,6 @@ export async function remove(req, res) {
   }
 }
 
-export async function toggleFavorito(req, res, next) {
-  try {
-    const movieId = Number(req.params.id);
-    const userId = Number(req.body.userId) || 1;
-
-    const existente = await prisma.favorito.findUnique({
-      where: { userId_movieId: { userId, movieId } },
-    });
-
-    if (existente) {
-      await prisma.favorito.delete({ where: { id: existente.id } });
-      return res.json({
-        status: "success",
-        message: "Eliminado de favoritos",
-        data: null,
-        esFavorito: false,
-      });
-    }
-
-    const nuevo = await prisma.favorito.create({
-      data: { userId, movieId },
-      include: { movie: true },
-    });
-
-    res.json({
-      status: "success",
-      message: "Agregado a favoritos",
-      data: nuevo,
-      esFavorito: true,
-    });
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
-}
-
-export async function getFavoritos(req, res, next) {
-  try {
-    const userId = Number(req.query.userId || req.query.idUsuario) || 1;
-    const favoritas = await prisma.favorito.findMany({
-      where: { userId },
-      include: { movie: true },
-    });
-
-    res.json({
-      status: "success",
-      data: favoritas,
-    });
-  } catch (error) {
-    next(error);
-  }
-}
-
 export async function getByGenero(req, res, next) {
   try {
     const { genero } = req.params;
@@ -141,7 +87,12 @@ export async function getByGenero(req, res, next) {
         .status(400)
         .json({ error: "El parámetro 'genero' es requerido" });
     }
-    const peliculas = await peliculaService.getByGenero(genero, lang, Number(page), Number(limit));
+    const peliculas = await peliculaService.getByGenero(
+      genero,
+      lang,
+      Number(page),
+      Number(limit),
+    );
     res.json(peliculas);
   } catch (error) {
     next(error);
