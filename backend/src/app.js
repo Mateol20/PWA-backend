@@ -17,6 +17,7 @@ const app = express();
 const origenesPermitidos = [
   "http://localhost:5173",
   "http://localhost:4173",
+  "https://pwa-frontend-roan.vercel.app",
 ];
 if (process.env.FRONTEND_URL) {
   origenesPermitidos.push(process.env.FRONTEND_URL);
