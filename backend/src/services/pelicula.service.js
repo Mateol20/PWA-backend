@@ -11,8 +11,10 @@ function aplicarTraduccion(pelicula, traducciones) {
   };
 }
 
-export async function getAll({ page = 1, limit = 8, search = "", lang } = {}) {
-  const skip = (page - 1) * limit;
+const MAX_LIMIT = 100;
+
+export async function getAll({ cursor, limit = 8, search = "", lang } = {}) {
+  limit = Math.min(limit, MAX_LIMIT);
 
   const where = search
     ? {
@@ -23,22 +25,33 @@ export async function getAll({ page = 1, limit = 8, search = "", lang } = {}) {
       }
     : {};
 
-  const data = await prisma.pelicula.findMany({ skip, take: limit, where, orderBy: { Id: "asc" } });
-  const total = await prisma.pelicula.count({ where });
+  const [items, total] = await Promise.all([
+    prisma.pelicula.findMany({
+      take: limit + 1,
+      where,
+      orderBy: { Id: "asc" },
+      ...(cursor ? { skip: 1, cursor: { Id: cursor } } : {}),
+    }),
+    prisma.pelicula.count({ where }),
+  ]);
 
-  if (lang && data.length > 0) {
-    const ids = data.map((p) => String(p.Id));
+  const hasMore = items.length > limit;
+  if (hasMore) items.pop();
+  const nextCursor = hasMore ? items[items.length - 1].Id : null;
+
+  if (lang && items.length > 0) {
+    const ids = items.map((p) => String(p.Id));
     const traducciones = await prisma.traduccion.findMany({
       where: { entidad: { in: ids }, idioma: lang },
     });
-    const dataMapped = data.map((p) => {
+    const dataMapped = items.map((p) => {
       const t = traducciones.filter((tr) => tr.entidad === String(p.Id));
       return aplicarTraduccion(p, t);
     });
-    return { data: dataMapped, total, page, limit };
+    return { data: dataMapped, total, nextCursor };
   }
 
-  return { data, total, page, limit };
+  return { data: items, total, nextCursor };
 }
 
 export async function getById(id, lang) {
@@ -65,4 +78,33 @@ export async function update(id, data) {
 
 export async function remove(id) {
   await prisma.pelicula.delete({ where: { Id: id } });
+}
+export async function getByGenero(genero, lang, page = 1, limit = 20) {
+  if (!genero) return [];
+  limit = Math.min(limit, MAX_LIMIT);
+  const skip = (page - 1) * limit;
+
+  const where = { Genre: { contains: genero, mode: "insensitive" } };
+  const [peliculas, total] = await Promise.all([
+    prisma.pelicula.findMany({ where, skip, take: limit, orderBy: { Id: "asc" } }),
+    prisma.pelicula.count({ where }),
+  ]);
+
+  if (lang && peliculas.length > 0) {
+    const ids = peliculas.map((p) => String(p.Id));
+    const traducciones = await prisma.traduccion.findMany({
+      where: { entidad: { in: ids }, idioma: lang },
+    });
+    return {
+      data: peliculas.map((p) => {
+        const t = traducciones.filter((tr) => tr.entidad === String(p.Id));
+        return aplicarTraduccion(p, t);
+      }),
+      total,
+      page,
+      limit,
+    };
+  }
+
+  return { data: peliculas, total, page, limit };
 }

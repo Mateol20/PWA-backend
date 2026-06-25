@@ -1,12 +1,11 @@
 import * as peliculaService from "../services/pelicula.service.js";
 import { validarPelicula } from "../validations/pelicula.validation.js";
-import prisma from "../prisma/prismaClient.js";
 
 export async function getAll(req, res) {
   try {
-    const { page, limit, search, lang } = req.query;
+    const { cursor, limit, search, lang } = req.query;
     const result = await peliculaService.getAll({
-      page: page ? parseInt(page) : undefined,
+      cursor: cursor ? parseInt(cursor) : undefined,
       limit: limit ? parseInt(limit) : undefined,
       search,
       lang,
@@ -79,72 +78,22 @@ export async function remove(req, res) {
   }
 }
 
-export async function toggleFavorito(req, res, next) {
+export async function getByGenero(req, res, next) {
   try {
-    const idPelicula = Number(req.params.id);
-    let idUsuario = Number(req.body.idUsuario) || 1;
-
-    let usuario = await prisma.usuario.findFirst();
-    if (!usuario) {
-      usuario = await prisma.usuario.create({
-        data: { nombre: "Admin", contrasenia: "admin123" },
-      });
+    const { genero } = req.params;
+    const { lang, page = 1, limit = 20 } = req.query;
+    if (!genero) {
+      return res
+        .status(400)
+        .json({ error: "El parámetro 'genero' es requerido" });
     }
-    idUsuario = usuario.Id;
-
-    const existente = await prisma.favorito.findFirst({
-      where: { idUsuario, idPelicula },
-    });
-
-    if (existente) {
-      await prisma.favorito.deleteMany({
-        where: { idUsuario, idPelicula },
-      });
-      return res.json({
-        status: "success",
-        message: "Eliminado de favoritos",
-        data: null,
-        esFavorito: false,
-      });
-    }
-
-    const nuevo = await prisma.favorito.create({
-      data: { idUsuario, idPelicula },
-      include: { pelicula: true },
-    });
-
-    res.json({
-      status: "success",
-      message: "Agregado a favoritos",
-      data: nuevo,
-      esFavorito: true,
-    });
-  } catch (error) {
-    next(error);
-  }
-}
-
-export async function getFavoritos(req, res, next) {
-  try {
-    let idUsuario = Number(req.query.idUsuario) || 1;
-
-    let usuario = await prisma.usuario.findFirst();
-    if (!usuario) {
-      usuario = await prisma.usuario.create({
-        data: { nombre: "Admin", contrasenia: "admin123" },
-      });
-    }
-    idUsuario = usuario.Id;
-
-    const favoritas = await prisma.favorito.findMany({
-      where: { idUsuario },
-      include: { pelicula: true },
-    });
-
-    res.json({
-      status: "success",
-      data: favoritas,
-    });
+    const peliculas = await peliculaService.getByGenero(
+      genero,
+      lang,
+      Number(page),
+      Number(limit),
+    );
+    res.json(peliculas);
   } catch (error) {
     next(error);
   }

@@ -1,8 +1,36 @@
 import { PrismaClient } from "@prisma/client";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import peliculas from "./seed-data.json" with { type: "json" };
 import traduccionesViejo from "./seed-traducciones.json" with { type: "json" };
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const imagesDir = path.join(__dirname, "..", "public", "images");
 const prisma = new PrismaClient();
+
+async function descargarImagen(url, dest) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const buffer = Buffer.from(await res.arrayBuffer());
+    fs.writeFileSync(dest, buffer);
+    return true;
+  } catch (err) {
+    console.warn(`  ⚠ No se pudo descargar ${url}: ${err.message}`);
+    return false;
+  }
+}
+
+function extraerImdbId(url) {
+  const m = url.match(/[?&]i=(tt\d+)/);
+  return m ? m[1] : null;
+}
+
+function urlImagenGrande(originalUrl) {
+  if (!originalUrl) return originalUrl;
+  return originalUrl.replace(/([?&]apikey=[^&]+)/, `$1&h=1000`);
+}
 
 const uiTraducciones = {
   es: {
@@ -14,6 +42,11 @@ const uiTraducciones = {
     actores: "Actores", sinopsis: "Sinopsis", publicadoEn: "Publicado en",
     sinResultados: "No se encontraron películas para esta búsqueda.",
     cargando: "Cargando...", sinPoster: "Sin Poster", sinImagen: "Imagen No Encontrada",
+    todo: "Todo", peliculas: "Películas", series: "Series", trailer: "Trailer",
+    verTrailer: "Ver trailer en YouTube",
+    duracion: "Duración", medios: "Medios", usuarios: "Usuarios",
+    amigos: "Amigos", quieroVer: "Quiero ver", puntuar: "Puntuar",
+    descargarPDF: "Descargar PDF", favorito: "Favorito", notas: "notas",
   },
   en: {
     inicio: "Home", favoritos: "Favorites", cartelera: "Showtime",
@@ -24,17 +57,41 @@ const uiTraducciones = {
     actores: "Actors", sinopsis: "Plot", publicadoEn: "Released in",
     sinResultados: "No movies found for this search.",
     cargando: "Loading...", sinPoster: "No Poster", sinImagen: "Image Not Found",
+    todo: "All", peliculas: "Movies", series: "Series", trailer: "Trailer",
+    verTrailer: "Watch trailer on YouTube",
+    duracion: "Duration", medios: "Media", usuarios: "Users",
+    amigos: "Friends", quieroVer: "Want to watch", puntuar: "Rate",
+    descargarPDF: "Download PDF", favorito: "Favorite", notas: "ratings",
   },
 };
 
 try {
   await prisma.favorito.deleteMany();
-  await prisma.usuario.deleteMany();
+  await prisma.user.deleteMany();
   await prisma.traduccion.deleteMany();
   await prisma.pelicula.deleteMany();
   await prisma.$executeRawUnsafe('ALTER SEQUENCE "pelicula_Id_seq" RESTART WITH 1');
 
-  await prisma.pelicula.createMany({ data: peliculas });
+  const peliculasConImagen = await Promise.all(
+    peliculas.map(async (p) => {
+      const imdbId = extraerImdbId(p.Poster);
+      if (!imdbId) return p;
+
+      const dest = path.join(imagesDir, `${imdbId}.jpg`);
+      if (!fs.existsSync(dest) || fs.statSync(dest).size < 50000) {
+        const urlGrande = urlImagenGrande(p.Poster);
+        console.log(`  Descargando ${imdbId}...`);
+        const ok = await descargarImagen(urlGrande, dest);
+        if (!ok && urlGrande !== p.Poster) {
+          console.log(`  Reintentando ${imdbId} sin h=1000...`);
+          await descargarImagen(p.Poster, dest);
+        }
+      }
+      return { ...p, Poster: `/images/${imdbId}.jpg`, Images: `/images/${imdbId}.jpg` };
+    })
+  );
+
+  await prisma.pelicula.createMany({ data: peliculasConImagen });
 
   const traduccionesUnificadas = [];
 
@@ -53,7 +110,10 @@ try {
   }
 
   await prisma.traduccion.createMany({ data: traduccionesUnificadas });
-  await prisma.usuario.create({ data: { nombre: "Admin", contrasenia: "admin123" } });
+  const { hashSync } = await import("bcrypt");
+  await prisma.user.create({
+    data: { name: "Admin", email: "admin@example.com", password: hashSync("admin123", 10), role: "admin" },
+  });
 
   console.log(`Seed ejecutado: ${peliculas.length} películas, ${traduccionesUnificadas.length} traducciones`);
 } catch (error) {
