@@ -1,4 +1,9 @@
 import swaggerUi from "swagger-ui-express";
+import path from "path";
+import express from "express";
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
 
 const swaggerDocument = {
   openapi: "3.0.0",
@@ -269,5 +274,7 @@ const swaggerDocument = {
 };
 
 export function setupSwagger(app) {
-  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  const swaggerDist = path.dirname(require.resolve("swagger-ui-dist"));
+  app.use("/api-docs", express.static(swaggerDist));
+  app.use("/api-docs", swaggerUi.setup(swaggerDocument));
 }
